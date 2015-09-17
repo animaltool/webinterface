@@ -1,0 +1,55 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title><f:render section="Title" /></title>
+		<f:base />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <script type="text/javascript" src="{f:uri.resource(path: 'js/jquery-2.1.1.min.js')}"></script>
+    <script type="text/javascript" src="{f:uri.resource(path: 'js/animaltool.js')}"></script>
+    <script type="text/javascript" src="{f:uri.resource(path: 'js/datepicker.js')}"></script>    
+    <link rel="stylesheet" media="screen" type="text/css" href="{f:uri.resource(path: 'css/datepicker.css')}" />
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'css/stylesheet.css')}" />
+    <script type="text/javascript">
+      <f:render partial="GlobalDynJs" arguments="{session: session}" />
+	   	<f:render section="DynJs" optional="true" />
+    </script>
+	</head>
+	<body class="simple">
+		<f:flashMessages class="flashmessages" as="flashMessages">
+      <ul>
+     	<f:for each="{flashMessages}" as="flashMessage">
+        <li class="flashmessage flash-{flashMessage.severity}"><f:translate id='{flashMessage.code}'>{flashMessage}</f:translate></li>
+     	</f:for>
+      </ul>
+		</f:flashMessages>
+
+		<h1><f:render section="Title" /></h1>
+		<f:render section="Content" />
+	</body>
+</html>

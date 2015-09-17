@@ -1,0 +1,133 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id:'animal.list')}</f:section>
+
+<f:section name="Content">
+  <div id="filter">
+    <f:render partial="FormErrors" arguments="{for: 'from',model:'report'}" />
+    <f:render partial="FormErrors" arguments="{for: 'to',model:'report'}" />
+    <f:form action="index" id="animal-filter-form">
+    <div class="filter-filters">
+      <div class="filter-label">{f:translate(id:'animal.list.filter')}:</div> 
+      <div class="filter-wrap {f:if(condition:'{filter}==\'all\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-all" value="all" checked="{f:if(condition:'{filter}==\'all\'',then:'true',else:'false')}"/><label for="animal-filter-all">{f:translate(id:'all')}</label></div>
+      <div class="filter-wrap {dl:ifIn(is:'{filter}',in:{0:'new',1:'quick',2:''},then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-new" value="new" checked="{dl:ifIn(is:'{filter}',in:{0:'new',1:'quick',2:''},then:'true',else:'false')}"/><label for="animal-filter-new">{f:translate(id:'filter.new')}</label></div>
+      <div class="filter-wrap {f:if(condition:'{filter}==\'treating\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-treating" value="treating" checked="{f:if(condition:'{filter}==\'treating\'',then:'true',else:'false')}"/><label for="animal-filter-treating">{f:translate(id:'filter.treating')}</label></div>
+      <div class="filter-wrap {f:if(condition:'{filter}==\'ready\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-ready" value="ready" checked="{f:if(condition:'{filter}==\'ready\'',then:'true',else:'false')}"/><label for="animal-filter-ready">{f:translate(id:'filter.ready')}</label></div>
+      <div class="filter-wrap {f:if(condition:'{filter}==\'extern\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-extern" value="extern" checked="{f:if(condition:'{filter}==\'extern\'',then:'true',else:'false')}"/><label for="animal-filter-extern">{f:translate(id:'filter.extern')}</label></div>
+      <div class="filter-wrap {f:if(condition:'{filter}==\'done\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-done" value="done" checked="{f:if(condition:'{filter}==\'done\'',then:'true',else:'false')}"/><label for="animal-filter-done">{f:translate(id:'filter.done')}</label></div>
+      <div class="filter-wrap {f:if(condition:'{filter}==\'adopted\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-adopted" value="adopted" checked="{f:if(condition:'{filter}==\'adopted\'',then:'true',else:'false')}"/><label for="animal-filter-adopted">{f:translate(id:'filter.adopted')}</label></div>
+      <f:security.ifHasRole role="Admin">
+        <div class="filter-wrap {f:if(condition:'{filter}==\'dead\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-dead" value="dead" checked="{f:if(condition:'{filter}==\'dead\'',then:'true',else:'false')}"/><label for="animal-filter-dead">{f:translate(id:'filter.dead')}</label></div>
+        <div class="filter-wrap {f:if(condition:'{filter}==\'dummy\'',then:'filter-on')}"><f:form.radio name="filter" class="animal-filter-item" id="animal-filter-dummy" value="dummy" checked="{f:if(condition:'{filter}==\'dummy\'',then:'true',else:'false')}"/><label for="animal-filter-dummy">{f:translate(id:'filter.dummy')}</label></div>
+      </f:security.ifHasRole>
+      </div>
+      <div id="date">
+       <div class="filter-label">{f:translate(id:'animal.list.date')}:</div> 
+  	 	 <label for="from">{f:translate(id:'animal.list.from')}</label><f:form.textfield type="date" value="{f:format.date(date: '{from}', format: 'Y-m-d')}" id="from" name="from" class="date-input" />
+  	 	 <label for="to">{f:translate(id:'animal.list.to')}</label><f:form.textfield type="date" value="{f:format.date(date: '{to}', format: 'Y-m-d')}" id="to" name="to" class="date-input" />
+   		<f:form.submit value="{f:translate(id:'animal.list.filter')}" class="button" />
+      </div>
+  	</f:form>
+    <div class="clearer"></div>
+  </div>
+	<f:if condition="{animals}">
+		<f:then>
+    <f:widget.paginate objects="{animals}" as="animals_p" configuration="{insertAbove:true,itemsPerPage:25,maximumNumberOfLinks:20}">
+			<table class="animal-list" cellpadding="0" cellspacing="0" class="animal-list list-filter-{filter}">
+					<tr class="head">
+            <th class="col-photo">{f:translate(id:'animal.photo')}</th>
+            <th class="col-boxid">{f:translate(id:'animal.boxID')}</th>
+            <th class="col-rfideartag">{f:translate(id:'animal.tag')}</th>
+            <th class="col-bread">{f:translate(id:'animal.bread')}</th>
+            <th class="col-color">{f:translate(id:'animal.color')}</th>
+            <th class="col-gender">{f:translate(id:'animal.gender')}</th>
+            <th class="col-therapystatus">{f:translate(id:'animal.therapyStatus')}</th>
+            <th class="col-staystatus">{f:translate(id:'animal.stayStatus')}</th>
+            <th class="col-healthcondition">{f:translate(id:'animal.healthCondition')}</th>
+						<th class="col-actions">{f:translate(id:'animal.list.actions')}</th>
+					</tr>
+				<f:for each="{animals_p}" as="animal">
+          <f:cycle values="{0:'odd',1:'even'}" as="zebraClass">
+					<tr class="{zebraClass}">
+          </f:cycle>
+            <td class="col-photo"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              <img src="{f:uri.resource(resource: animal.photo, path:'images/clear.gif')}" alt="{animal}" />
+            </dl:link.ifAction></td>
+            <td class="col-boxid">
+            <dl:link.ifAction action="treatment" elseAction="view" arguments="{animal: animal}" elseArguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {animal.boxID}
+            </dl:link.ifAction></td>
+            <td class="col-rfideartag"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              <dl:override value="{animal.rFID}" altValue="{animal.earTag}" />
+            </dl:link.ifAction></td>
+            <td class="col-bread"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {dl:override(value:animal.bread,altValue:animal.species)}
+            </dl:link.ifAction></td>
+            <td class="col-color"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {animal.color.name}
+            </dl:link.ifAction></td>
+            <td class="col-gender"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {dl:array(obj:animal.genders,prop:animal.gender)}
+            </dl:link.ifAction></td>
+            <td class="col-therapystatus"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {dl:array(obj:animal.therapyStatuses,prop:animal.therapyStatus)}
+            </dl:link.ifAction></td>
+            <td class="col-staystatus"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {dl:array(obj:animal.stayStatuses,prop:animal.stayStatus)}
+            </dl:link.ifAction></td>
+            <td class="col-healthcondition"><dl:link.ifAction action="treatment" elseAction="view" elseArguments="{animal: animal}" arguments="{animal: animal}" condition="{animal.isTreatable}" title="{animal}">
+              {dl:array(obj:animal.healthConditions,prop:animal.healthCondition)}
+            </dl:link.ifAction></td>
+            <td class="col-admin">
+              <f:security.ifHasRole role="Admin">
+                <f:then>
+						  <f:form action="delete" arguments="{animal: animal}">
+  						  <f:link.action action="edit" arguments="{animal: animal}" class="link-button">{f:translate(id:'edit.admin')}</f:link.action>
+							  <f:form.submit value="{f:translate(id:'delete')}" class="button confirm"/>
+  						</f:form>
+                </f:then>
+              </f:security.ifHasRole>
+            <f:if condition="{animal.isDoneable}">
+                <f:then>
+						  <f:form action="done" arguments="{animal: animal}">
+							  <f:form.submit value="{f:translate(id:'animal.done')}" class="button"/>
+  						</f:form>
+                </f:then>
+            </f:if>
+            </td>
+					</tr>
+				</f:for>
+			</table>
+      </f:widget.paginate> 
+		</f:then>
+		<f:else>
+			<p>{f:translate(id:'animal.none')}</p>
+		</f:else>
+	</f:if>
+</f:section>

@@ -1,0 +1,65 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<f:base />
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'css/stylesheet.css')}" />
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'css/stylesheet-pdf.css')}" />
+	</head>
+	<body>       
+<htmlpageheader name="header">
+<table width="100%" style="vertical-align: top; font-family: serif; font-size: 12pt;
+    color: #000000; font-weight: bold;" ><tr>
+    <td width="50%"><span style="font-weight: bold;"><f:if condition="{session.location}">
+    <f:then>
+      {f:translate(id:'report.list.pdf',arguments:{0:'{session.location}'})}
+    </f:then>
+    <f:else>
+      {f:translate(id:'report.list.pdf.all')}
+    </f:else>
+  </f:if></span></td>
+    <td width="50%" style="text-align: right; ">{f:format.date(date: '{from}', format: 'Y-m-d')}<f:if condition="{to}">
+    <f:then>
+      - {f:format.date(date: '{to}', format: 'Y-m-d')}
+    </f:then>
+  </f:if></td>
+    </tr></table>
+</htmlpageheader>
+<htmlpagefooter name="footer">
+<table width="100%" style="vertical-align: bottom; font-family: serif; font-size: 8pt;
+    color: #000000; font-weight: bold; font-style: italic;"><tr>
+    <td width="33%"><span style="font-weight: bold; font-style: italic;"></span></td>
+    <td width="33%" align="center" style="font-weight: bold; font-style: italic;"></td>
+    <td width="33%" style="text-align: right; "><![CDATA[{PAGENO}/{nbpg}]]></td>
+    </tr></table>
+</htmlpagefooter>
+<sethtmlpageheader name="header" page="ALL" value="on" />
+<sethtmlpagefooter name="footer" value="on" />
+		<f:render section="Content" />
+	</body>
+</html>

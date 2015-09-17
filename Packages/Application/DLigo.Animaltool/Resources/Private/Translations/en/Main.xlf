@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="DLigo.Animaltool" source-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="authentication.required" xml:space="preserve">
+				<source>Authentication required</source>
+			</trans-unit>
+			<trans-unit id="authentication.username" xml:space="preserve">
+				<source>Username</source>
+			</trans-unit>
+			<trans-unit id="authentication.password" xml:space="preserve">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="authentication.new-password" xml:space="preserve">
+				<source>New password</source>
+			</trans-unit>
+			<trans-unit id="authentication.login" xml:space="preserve">
+				<source>Login</source>
+			</trans-unit>
+			<trans-unit id="authentication.logout" xml:space="preserve">
+				<source>Logout</source>
+			</trans-unit>
+			<trans-unit id="update" xml:space="preserve">
+				<source>Update</source>
+			</trans-unit>
+			<trans-unit id="submit" xml:space="preserve">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="create" xml:space="preserve">
+				<source>Create</source>
+			</trans-unit>
+			<trans-unit id="all" xml:space="preserve">
+				<source>All</source>
+			</trans-unit>
+			<trans-unit id="search" xml:space="preserve">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="edit" xml:space="preserve">
+				<source>Edit</source>
+			</trans-unit>
+			<trans-unit id="edit.admin" xml:space="preserve">
+				<source>Edit</source>
+			</trans-unit>
+			<trans-unit id="delete" xml:space="preserve">
+				<source>Delete</source>
+			</trans-unit>
+			<trans-unit id="cancel" xml:space="preserve">
+				<source>(Cancel)</source>
+			</trans-unit>
+			<trans-unit id="select" xml:space="preserve">
+				<source>Select</source>
+			</trans-unit>
+			<trans-unit id="login" xml:space="preserve">
+				<source>Login</source>
+			</trans-unit>
+			<trans-unit id="confirm" xml:space="preserve">
+				<source>Are you sure?</source>
+			</trans-unit>
+			<trans-unit id="yes" xml:space="preserve">
+				<source>yes</source>
+			</trans-unit>
+			<trans-unit id="no" xml:space="preserve">
+				<source>no</source>
+			</trans-unit>
+			<trans-unit id="or" xml:space="preserve">
+				<source>Or</source>
+			</trans-unit>
+
+			<trans-unit id="flash.logout" xml:space="preserve">
+				<source>Succesfully logged out.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.new" xml:space="preserve">
+				<source>Created a new animal.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.update" xml:space="preserve">
+				<source>Updated the animal.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.update.merge" xml:space="preserve">
+				<source>Updated the animal. Merged with existing animal.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.delete" xml:space="preserve">
+				<source>Deleted an animal.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.done" xml:space="preserve">
+				<source>Set animal as done/released.</source>
+			</trans-unit>
+			<trans-unit id="flash.species.new" xml:space="preserve">
+				<source>Created a new species.</source>
+			</trans-unit>
+			<trans-unit id="flash.species.update" xml:space="preserve">
+				<source>Updated the species.</source>
+			</trans-unit>
+			<trans-unit id="flash.species.delete" xml:space="preserve">
+				<source>Deleted a species.</source>
+			</trans-unit>
+			<trans-unit id="flash.owner.new" xml:space="preserve">
+				<source>Created a new owner.</source>
+			</trans-unit>
+			<trans-unit id="flash.owner.update" xml:space="preserve">
+				<source>Updated the owner.</source>
+			</trans-unit>
+			<trans-unit id="flash.owner.delete" xml:space="preserve">
+				<source>Deleted a owner.</source>
+			</trans-unit>
+			<trans-unit id="flash.therapy.new" xml:space="preserve">
+				<source>Created a new therapy.</source>
+			</trans-unit>
+			<trans-unit id="flash.therapy.update" xml:space="preserve">
+				<source>Updated the therapy.</source>
+			</trans-unit>
+			<trans-unit id="flash.therapy.delete" xml:space="preserve">
+				<source>Deleted a therapy.</source>
+			</trans-unit>
+			<trans-unit id="flash.user.new" xml:space="preserve">
+				<source>Created a new user.</source>
+			</trans-unit>
+			<trans-unit id="flash.user.update" xml:space="preserve">
+				<source>Updated the user.</source>
+			</trans-unit>
+			<trans-unit id="flash.user.delete" xml:space="preserve">
+				<source>Deleted a user.</source>
+			</trans-unit>
+			<trans-unit id="flash.external.update" xml:space="preserve">
+				<source>Updated the clinic/shelter/adoption.</source>
+			</trans-unit>
+			<trans-unit id="flash.external.delete" xml:space="preserve">
+				<source>Deleted a clinic/shelter/adoption.</source>
+			</trans-unit>
+			<trans-unit id="flash.external.send" xml:space="preserve">
+				<source>Send to clinic/shelter/adoption.</source>
+			</trans-unit>
+			<trans-unit id="flash.animal.merge.cancel" xml:space="preserve">
+				<source>Animals not merged. RFID/Eartag removed.</source>
+			</trans-unit>
+      
+			<trans-unit id="menu.location.change" xml:space="preserve">
+				<source>Change Location ({0})</source>
+			</trans-unit>
+			<trans-unit id="menu.location.edit" xml:space="preserve">
+				<source>Edit Location</source>
+			</trans-unit>
+			<trans-unit id="menu.list" xml:space="preserve">
+				<source>List</source>
+			</trans-unit>
+			<trans-unit id="menu.bread" xml:space="preserve">
+				<source>Edit Species/Breeds</source>
+			</trans-unit>
+			<trans-unit id="menu.color" xml:space="preserve">
+				<source>Edit Colors</source>
+			</trans-unit>
+			<trans-unit id="menu.therapy" xml:space="preserve">
+				<source>Edit Therapies</source>
+			</trans-unit>
+			<trans-unit id="menu.user" xml:space="preserve">
+				<source>Edit Users</source>
+			</trans-unit>
+			<trans-unit id="menu.owner" xml:space="preserve">
+				<source>Edit Owners</source>
+			</trans-unit>
+			<trans-unit id="menu.external" xml:space="preserve">
+				<source>Edit External entities</source>
+			</trans-unit>
+			<trans-unit id="menu.logout" xml:space="preserve">
+				<source>Logout</source>
+			</trans-unit>
+			<trans-unit id="menu.history" xml:space="preserve">
+				<source>History</source>
+			</trans-unit>
+			<trans-unit id="menu.report" xml:space="preserve">
+				<source>Report</source>
+			</trans-unit>
+      
+			<trans-unit id="filter.new" xml:space="preserve">
+				<source>New</source>
+			</trans-unit>
+			<trans-unit id="filter.treating" xml:space="preserve">
+				<source>In therapy</source>
+			</trans-unit>
+			<trans-unit id="filter.ready" xml:space="preserve">
+				<source>Ready to release</source>
+			</trans-unit>
+			<trans-unit id="filter.extern" xml:space="preserve">
+				<source>External care</source>
+			</trans-unit>
+			<trans-unit id="filter.done" xml:space="preserve">
+				<source>Done</source>
+			</trans-unit>
+			<trans-unit id="filter.adopted" xml:space="preserve">
+				<source>Adopted/permanently sheltered</source>
+			</trans-unit>
+			<trans-unit id="filter.dead" xml:space="preserve">
+				<source>Dead</source>
+			</trans-unit>
+			<trans-unit id="filter.dummy" xml:space="preserve">
+				<source>Dummy</source>
+			</trans-unit>
+
+			<trans-unit id="animal.edit" xml:space="preserve">
+				<source>Edit animal "{0}"</source>
+			</trans-unit>
+			<trans-unit id="animal.new" xml:space="preserve">
+				<source>New animal "{0}"</source>
+			</trans-unit>
+			<trans-unit id="animal.view" xml:space="preserve">
+				<source>View animal "{0}"</source>
+			</trans-unit>
+			<trans-unit id="animal.new.short" xml:space="preserve">
+				<source>new entry</source>
+			</trans-unit>
+			<trans-unit id="animal.treat" xml:space="preserve">
+				<source>Treat "{0}"</source>
+			</trans-unit>
+			<trans-unit id="animal.list" xml:space="preserve">
+				<source>A list of animals</source>
+			</trans-unit>
+			<trans-unit id="animal.list.date" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="animal.list.actions" xml:space="preserve">
+				<source>Actions</source>
+			</trans-unit>
+			<trans-unit id="animal.create" xml:space="preserve">
+				<source>Create a new animal</source>
+			</trans-unit>
+			<trans-unit id="animal.none" xml:space="preserve">
+				<source>No animal in this list</source>
+			</trans-unit>
+			<trans-unit id="animal.location" xml:space="preserve">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="animal.species" xml:space="preserve">
+				<source>Species</source>
+			</trans-unit>
+			<trans-unit id="animal.animal" xml:space="preserve">
+				<source>RFID/Ear tag</source>
+			</trans-unit>
+			<trans-unit id="animal.tag" xml:space="preserve">
+				<source>RFID/Ear tag</source>
+			</trans-unit>
+			<trans-unit id="animal.rFID" xml:space="preserve">
+				<source>RFID</source>
+			</trans-unit>
+			<trans-unit id="animal.gender" xml:space="preserve">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="animal.isPrivate" xml:space="preserve">
+				<source>Is private</source>
+			</trans-unit>
+			<trans-unit id="animal.owner" xml:space="preserve">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="animal.bread" xml:space="preserve">
+				<source>Breed</source>
+			</trans-unit>
+			<trans-unit id="animal.birthday" xml:space="preserve">
+				<source>Birthday</source>
+			</trans-unit>
+			<trans-unit id="animal.weight" xml:space="preserve">
+				<source>Weight</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus" xml:space="preserve">
+				<source>Stay status</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.catched" xml:space="preserve">
+				<source>Caught</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.inTherapy" xml:space="preserve">
+				<source>In therapy</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.external" xml:space="preserve">
+				<source>External care</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.releasing" xml:space="preserve">
+				<source>Releasing/Delivering</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.released" xml:space="preserve">
+				<source>Released/Delivered</source>
+			</trans-unit>
+			<trans-unit id="animal.stayStatus.adopted" xml:space="preserve">
+				<source>Adopted/Sheltered</source>
+			</trans-unit>
+			<trans-unit id="animal.therapyStatus" xml:space="preserve">
+				<source>Therapy status</source>
+			</trans-unit>
+			<trans-unit id="animal.therapyStatus.wait" xml:space="preserve">
+				<source>Wait</source>
+			</trans-unit>
+			<trans-unit id="animal.therapyStatus.inOperation" xml:space="preserve">
+				<source>In operation</source>
+			</trans-unit>
+			<trans-unit id="animal.therapyStatus.ready" xml:space="preserve">
+				<source>Ready to release</source>
+			</trans-unit>
+			<trans-unit id="animal.therapyStatus.dead" xml:space="preserve">
+				<source>Dead</source>
+			</trans-unit>
+			<trans-unit id="animal.healthCondition" xml:space="preserve">
+				<source>Health condition</source>
+			</trans-unit>
+			<trans-unit id="animal.healthCondition.good" xml:space="preserve">
+				<source>Good</source>
+			</trans-unit>
+			<trans-unit id="animal.healthCondition.ok" xml:space="preserve">
+				<source>OK</source>
+			</trans-unit>
+			<trans-unit id="animal.healthCondition.bad" xml:space="preserve">
+				<source>Bad</source>
+			</trans-unit>
+			<trans-unit id="animal.healthCondition.veryBad" xml:space="preserve">
+				<source>Very bad</source>
+			</trans-unit>
+			<trans-unit id="animal.specialProperties" xml:space="preserve">
+				<source>Distinguishing marks</source>
+			</trans-unit>
+			<trans-unit id="animal.earTag" xml:space="preserve">
+				<source>Ear tag</source>
+			</trans-unit>
+			<trans-unit id="animal.color" xml:space="preserve">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="animal.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="animal.photo" xml:space="preserve">
+				<source>Photo</source>
+			</trans-unit>
+			<trans-unit id="animal.boxID" xml:space="preserve">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="animal.treatment" xml:space="preserve">
+				<source>Treatments</source>
+			</trans-unit>
+			<trans-unit id="animal.treatments" xml:space="preserve">
+				<source>Treatments</source>
+			</trans-unit>
+			<trans-unit id="animal.treatment.prev" xml:space="preserve">
+				<source>Previous treatments</source>
+			</trans-unit>
+			<trans-unit id="animal.continue" xml:space="preserve">
+				<source>Continue treatment</source>
+			</trans-unit>
+			<trans-unit id="animal.release" xml:space="preserve">
+				<source>Release</source>
+			</trans-unit>
+			<trans-unit id="animal.external" xml:space="preserve">
+				<source>Send to external care</source>
+			</trans-unit>
+			<trans-unit id="animal.external.edit" xml:space="preserve">
+				<source>Edit external care</source>
+			</trans-unit>
+			<trans-unit id="animal.external.new" xml:space="preserve">
+				<source>Send to a new external care</source>
+			</trans-unit>
+			<trans-unit id="animal.dead" xml:space="preserve">
+				<source>Dead</source>
+			</trans-unit>
+			<trans-unit id="animal.action" xml:space="preserve">
+				<source>Actions</source>
+			</trans-unit>      
+			<trans-unit id="animal.gender." xml:space="preserve">
+				<source> </source>
+			</trans-unit>      
+			<trans-unit id="animal.gender.m" xml:space="preserve">
+				<source>M</source>
+			</trans-unit>      
+			<trans-unit id="animal.gender.f" xml:space="preserve">
+				<source>F</source>
+			</trans-unit>     
+			<trans-unit id="animal.duplicate" xml:space="preserve">
+				<source>Duplicate animal for {0}</source>
+			</trans-unit>     
+			<trans-unit id="animal.duplicate.descr" xml:space="preserve">
+				<source>The animal {0} has the same RFID/Ear tag. The data can be merged if this is really the same animal. Please compare te data.</source>
+			</trans-unit>     
+			<trans-unit id="animal.duplicate.old" xml:space="preserve">
+				<source>Old</source>
+			</trans-unit>     
+			<trans-unit id="animal.duplicate.new" xml:space="preserve">
+				<source>New</source>
+			</trans-unit>   
+			<trans-unit id="animal.merge" xml:space="preserve">
+				<source>Merge the records!</source>
+			</trans-unit>   
+			<trans-unit id="animal.tryagain" xml:space="preserve">
+				<source>Use another RFID/Ear tag and try again</source>
+			</trans-unit>   
+			<trans-unit id="animal.tryagain.button" xml:space="preserve">
+				<source>Try again</source>
+			</trans-unit>   
+			<trans-unit id="animal.done" xml:space="preserve">
+				<source>Done!</source>
+			</trans-unit>   
+			<trans-unit id="animal.inexternal" xml:space="preserve">
+				<source>External care</source>
+			</trans-unit>   
+			<trans-unit id="animal.inexternal.1" xml:space="preserve">
+				<source>In external care in a clinic since {0}</source>
+			</trans-unit>   
+			<trans-unit id="animal.inexternal.2" xml:space="preserve">
+				<source>In external care in a shelter since {0}</source>
+			</trans-unit>   
+			<trans-unit id="animal.inexternal.3" xml:space="preserve">
+				<source>Adopted since {0}</source>
+			</trans-unit>   
+			<trans-unit id="animal.prevexternal.1" xml:space="preserve">
+				<source>In external care in a clinic from {0} to {1}</source>
+			</trans-unit>   
+			<trans-unit id="animal.prevexternal.2" xml:space="preserve">
+				<source>In external care in a shelter from {0} to {1}</source>
+			</trans-unit>   
+			<trans-unit id="animal.prevexternal.3" xml:space="preserve">
+				<source>Adopted from {0} to {1}</source>
+			</trans-unit>   
+			<trans-unit id="animal.list.from" xml:space="preserve">
+				<source>From</source>
+			</trans-unit>   
+			<trans-unit id="animal.list.to" xml:space="preserve">
+				<source>To</source>
+			</trans-unit>   
+			<trans-unit id="animal.list.filter" xml:space="preserve">
+				<source>Filter</source>
+			</trans-unit>   
+      <trans-unit id="animal.cachedate" xml:space="preserve">
+				<source>Caught at</source>
+			</trans-unit>   
+      <trans-unit id="animal.treatdate" xml:space="preserve">
+				<source>Last treated at</source>
+			</trans-unit>   
+      <trans-unit id="animal.hasgps" xml:space="preserve">
+				<source>Has GPS</source>
+			</trans-unit>   
+      <trans-unit id="animal.isDummy" xml:space="preserve">
+				<source>Dummy (canceled merge)</source>
+			</trans-unit>   
+      <trans-unit id="animal.showOwner" xml:space="preserve">
+				<source>Show owner</source>
+			</trans-unit>   
+      <trans-unit id="animal.hideOwner" xml:space="preserve">
+				<source>Hide owner</source>
+			</trans-unit>   
+      <trans-unit id="animal.size" xml:space="preserve">
+				<source>Size</source>
+			</trans-unit>   
+      <trans-unit id="animal.size.small" xml:space="preserve">
+				<source>small</source>
+			</trans-unit>   
+      <trans-unit id="animal.size.medium" xml:space="preserve">
+				<source>medium</source>
+			</trans-unit>   
+      <trans-unit id="animal.size.large" xml:space="preserve">
+				<source>large</source>
+			</trans-unit>   
+      
+			<trans-unit id="duplicate.tryagain" xml:space="preserve">
+				<source>Try again</source>
+			</trans-unit>   
+      
+			<trans-unit id="owner.list" xml:space="preserve">
+				<source>Owner list</source>
+			</trans-unit>
+			<trans-unit id="owner.none" xml:space="preserve">
+				<source>No owners present</source>
+			</trans-unit>
+			<trans-unit id="owner.edit" xml:space="preserve">
+				<source>Edit owner "{0}"</source>
+			</trans-unit>
+			<trans-unit id="owner.new" xml:space="preserve">
+				<source>New owner</source>
+			</trans-unit>
+			<trans-unit id="owner.name" xml:space="preserve">
+				<source>Lastname</source>
+			</trans-unit>
+			<trans-unit id="owner.firstname" xml:space="preserve">
+				<source>First name</source>
+			</trans-unit>
+			<trans-unit id="owner.firstName" xml:space="preserve">
+				<source>First name</source>
+			</trans-unit>
+			<trans-unit id="owner.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="owner.iDNumber" xml:space="preserve">
+				<source>ID number</source>
+			</trans-unit>
+			<trans-unit id="owner.cNP" xml:space="preserve">
+				<source>CNP</source>
+			</trans-unit>
+			<trans-unit id="owner.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="owner.houseNumber" xml:space="preserve">
+				<source>House number</source>
+			</trans-unit>
+			<trans-unit id="owner.zipCode" xml:space="preserve">
+				<source>Zip code</source>
+			</trans-unit>
+			<trans-unit id="owner.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="owner.region" xml:space="preserve">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="owner.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="owner.passId" xml:space="preserve">
+				<source>Dog ID/Pass Nr.</source>
+			</trans-unit>
+			<trans-unit id="owner.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+
+			<trans-unit id="treatment.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="treatment.date" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="treatment.doctor" xml:space="preserve">
+				<source>Doctor</source>
+			</trans-unit>
+
+			<trans-unit id="therapy.list" xml:space="preserve">
+				<source>Therapy list</source>
+			</trans-unit>
+			<trans-unit id="therapy.edit" xml:space="preserve">
+				<source>Edit therapy "{0}"</source>
+			</trans-unit>
+			<trans-unit id="therapy.create" xml:space="preserve">
+				<source>Create new therapy</source>
+			</trans-unit>
+			<trans-unit id="therapy.none" xml:space="preserve">
+				<source>No therapies defined</source>
+			</trans-unit>
+			<trans-unit id="therapy.new" xml:space="preserve">
+				<source>New therapy</source>
+			</trans-unit>
+			<trans-unit id="therapy.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="therapy.hasExtraData" xml:space="preserve">
+				<source>Use an additional field</source>
+			</trans-unit>
+			<trans-unit id="therapy.isUnique" xml:space="preserve">
+				<source>Only once per animal</source>
+			</trans-unit>
+			<trans-unit id="therapy.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+      
+			<trans-unit id="species.create" xml:space="preserve">
+				<source>Create new species</source>
+			</trans-unit>
+			<trans-unit id="species.list" xml:space="preserve">
+				<source>Species list</source>
+			</trans-unit>
+			<trans-unit id="species.none" xml:space="preserve">
+				<source>No species defined</source>
+			</trans-unit>
+			<trans-unit id="species.new" xml:space="preserve">
+				<source>New species</source>
+			</trans-unit>
+			<trans-unit id="species.edit" xml:space="preserve">
+				<source>Edit species "{0}" and its breeds</source>
+			</trans-unit>
+			<trans-unit id="species.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="species.breads" xml:space="preserve">
+				<source>Breeds</source>
+			</trans-unit>
+			<trans-unit id="species.useTag" xml:space="preserve">
+				<source>Use ear tag or RFID</source>
+			</trans-unit>
+      
+			<trans-unit id="color.list" xml:space="preserve">
+				<source>Color list</source>
+			</trans-unit>
+      
+			<trans-unit id="location.select" xml:space="preserve">
+				<source>Select location</source>
+			</trans-unit>
+			<trans-unit id="location.list" xml:space="preserve">
+				<source>Location list</source>
+			</trans-unit>
+			<trans-unit id="location.edit" xml:space="preserve">
+				<source>Edit location "{0}"</source>
+			</trans-unit>
+			<trans-unit id="location.none" xml:space="preserve">
+				<source>No locations defined</source>
+			</trans-unit>
+			<trans-unit id="location.create" xml:space="preserve">
+				<source>Create location</source>
+			</trans-unit>
+			<trans-unit id="location.new" xml:space="preserve">
+				<source>New location</source>
+			</trans-unit>
+			<trans-unit id="location.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="location.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="location.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="location.cityPart" xml:space="preserve">
+				<source>City part</source>
+			</trans-unit>
+			<trans-unit id="location.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="location.region" xml:space="preserve">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="location.zipCode" xml:space="preserve">
+				<source>Zip code</source>
+			</trans-unit>
+
+			<trans-unit id="user.list" xml:space="preserve">
+				<source>User list</source>
+			</trans-unit>
+			<trans-unit id="user.none" xml:space="preserve">
+				<source>No users present</source>
+			</trans-unit>
+			<trans-unit id="user.edit" xml:space="preserve">
+				<source>Edit user "{0}"</source>
+			</trans-unit>
+			<trans-unit id="user.new" xml:space="preserve">
+				<source>New user</source>
+			</trans-unit>
+			<trans-unit id="user.lastname" xml:space="preserve">
+				<source>Last name</source>
+			</trans-unit>
+			<trans-unit id="user.firstname" xml:space="preserve">
+				<source>First name</source>
+			</trans-unit>
+			<trans-unit id="user.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="user.altPhone" xml:space="preserve">
+				<source>Phone (alternative)</source>
+			</trans-unit>
+			<trans-unit id="user.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="user.number" xml:space="preserve">
+				<source>House number</source>
+			</trans-unit>
+			<trans-unit id="user.zipCode" xml:space="preserve">
+				<source>Zip code</source>
+			</trans-unit>
+			<trans-unit id="user.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="user.region" xml:space="preserve">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="user.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="user.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="user.password2" xml:space="preserve">
+				<source>Password confirm</source>
+			</trans-unit>
+			<trans-unit id="user.create" xml:space="preserve">
+				<source>Create new user</source>
+			</trans-unit>
+			<trans-unit id="user.role" xml:space="preserve">
+				<source>Role</source>
+			</trans-unit>
+			<trans-unit id="user.locations" xml:space="preserve">
+				<source>Locations</source>
+			</trans-unit>
+			<trans-unit id="user.password" xml:space="preserve">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="user.username" xml:space="preserve">
+				<source>Username</source>
+			</trans-unit>
+
+			<trans-unit id="action.lat" xml:space="preserve">
+				<source>Latitude</source>
+			</trans-unit>      
+			<trans-unit id="action.lng" xml:space="preserve">
+				<source>Longitude</source>
+			</trans-unit>      
+			<trans-unit id="action.team" xml:space="preserve">
+				<source>Catcher</source>
+			</trans-unit>      
+			<trans-unit id="action.location" xml:space="preserve">
+				<source>Location</source>
+			</trans-unit>      
+
+			<trans-unit id="external.none" xml:space="preserve">
+				<source>No external entities present</source>
+			</trans-unit>      
+			<trans-unit id="external.open" xml:space="preserve">
+				<source>Send {0} to external care</source>
+			</trans-unit>      
+			<trans-unit id="external.list" xml:space="preserve">
+				<source>List of external care entities</source>
+			</trans-unit>      
+			<trans-unit id="external.edit" xml:space="preserve">
+				<source>Edit clinic/shelter/adoption {0}</source>
+			</trans-unit>      
+			<trans-unit id="external.externalType" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>      
+			<trans-unit id="external.externalType.clinic" xml:space="preserve">
+				<source>Clinic or external doctor</source>
+			</trans-unit>      
+			<trans-unit id="external.externalType.shelter" xml:space="preserve">
+				<source>Shelter</source>
+			</trans-unit>      
+			<trans-unit id="external.externalType.adoption" xml:space="preserve">
+				<source>Adoption</source>
+			</trans-unit>      
+			<trans-unit id="external.isPermanent" xml:space="preserve">
+				<source>Animal stays permanently</source>
+			</trans-unit>      
+			<trans-unit id="external.name" xml:space="preserve">
+				<source>Name (clinic/shelter)</source>
+			</trans-unit>      
+			<trans-unit id="external.firstName" xml:space="preserve">
+				<source>First name (contact)</source>
+			</trans-unit>      
+			<trans-unit id="external.lastName" xml:space="preserve">
+				<source>Last name (contact)</source>
+			</trans-unit>      
+			<trans-unit id="external.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>      
+			<trans-unit id="external.send" xml:space="preserve">
+				<source>Send</source>
+			</trans-unit>      
+			<trans-unit id="external.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="external.houseNumber" xml:space="preserve">
+				<source>House number</source>
+			</trans-unit>
+			<trans-unit id="external.zipCode" xml:space="preserve">
+				<source>Zip code</source>
+			</trans-unit>
+			<trans-unit id="external.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="external.region" xml:space="preserve">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="external.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="external.comment" xml:space="preserve">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="external.is" xml:space="preserve">
+				<source>Is in external care</source>
+			</trans-unit>
+
+			<trans-unit id="history.button" xml:space="preserve">
+				<source>Show history</source>
+			</trans-unit>
+			<trans-unit id="history.list" xml:space="preserve">
+				<source>History</source>
+			</trans-unit>
+			<trans-unit id="history.list.animal" xml:space="preserve">
+				<source>History for {0}</source>
+			</trans-unit>
+			<trans-unit id="history.from" xml:space="preserve">
+				<source>From</source>
+			</trans-unit>
+			<trans-unit id="history.to" xml:space="preserve">
+				<source>To (optional)</source>
+			</trans-unit>
+			<trans-unit id="history.none" xml:space="preserve">
+				<source>No entries for this date range.</source>
+			</trans-unit>
+			<trans-unit id="history.time" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="history.object" xml:space="preserve">
+				<source>Object</source>
+			</trans-unit>
+			<trans-unit id="history.type" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="history.id" xml:space="preserve">
+				<source>Internal ID</source>
+			</trans-unit>
+			<trans-unit id="history.properties" xml:space="preserve">
+				<source>Changes</source>
+			</trans-unit>
+			<trans-unit id="history.animalid" xml:space="preserve">
+				<source>Belongs to Animal</source>
+			</trans-unit>
+			<trans-unit id="history.boxid" xml:space="preserve">
+				<source>Belongs to Animal (label)</source>
+			</trans-unit>
+			<trans-unit id="history.byid" xml:space="preserve">
+				<source>By</source>
+			</trans-unit>
+			<trans-unit id="history.bylabel" xml:space="preserve">
+				<source>By (label)</source>
+			</trans-unit>
+
+			<trans-unit id="report.list.all" xml:space="preserve">
+				<source>Report on all locations</source>
+			</trans-unit>
+			<trans-unit id="report.list" xml:space="preserve">
+				<source>Report on location "{0}"</source>
+			</trans-unit>
+			<trans-unit id="report.list.pdf.all" xml:space="preserve">
+				<source>Animals - all locations</source>
+			</trans-unit>
+			<trans-unit id="report.list" xml:space="preserve">
+				<source>Animals - location "{0}"</source>
+			</trans-unit>
+			<trans-unit id="report.none" xml:space="preserve">
+				<source>No data for this date(s)</source>
+			</trans-unit>
+			<trans-unit id="report.total" xml:space="preserve">
+				<source>Total</source>
+			</trans-unit>
+			<trans-unit id="report.advanced" xml:space="preserve">
+				<source>Advanced</source>
+			</trans-unit>
+			<trans-unit id="report.simple" xml:space="preserve">
+				<source>Simple</source>
+			</trans-unit>
+			<trans-unit id="report.oalist" xml:space="preserve">
+				<source>Animals/Owner</source>
+			</trans-unit>
+			<trans-unit id="report.from" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="report.to" xml:space="preserve">
+				<source>To (optional)</source>
+			</trans-unit>
+			<trans-unit id="report.button" xml:space="preserve">
+				<source>Create report</source>
+			</trans-unit>
+			<trans-unit id="report.export" xml:space="preserve">
+				<source>Export as CSV</source>
+			</trans-unit>
+			<trans-unit id="report.export.all" xml:space="preserve">
+				<source>Export all as CSV</source>
+			</trans-unit>
+			<trans-unit id="report.pdf" xml:space="preserve">
+				<source>Report as PDF</source>
+			</trans-unit>
+			<trans-unit id="report.species_team" xml:space="preserve">
+				<source>Caught animals (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_team_female" xml:space="preserve">
+				<source>Caught animals (female) (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_team_male" xml:space="preserve">
+				<source>Caught animals (male) (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_team_owner" xml:space="preserve">
+				<source>Caught animals with owner (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_team_noowner" xml:space="preserve">
+				<source>Caught animals without owner (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team" xml:space="preserve">
+				<source>Performed therapies (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_female" xml:space="preserve">
+				<source>Performed therapies (female) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_male" xml:space="preserve">
+				<source>Performed therapies (male) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_dog" xml:space="preserve">
+				<source>Performed therapies dogs (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_dog_female" xml:space="preserve">
+				<source>Performed therapies dogs (female) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_dog_male" xml:space="preserve">
+				<source>Performed therapies dogs (male) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_cat" xml:space="preserve">
+				<source>Performed therapies cats (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_cat_female" xml:space="preserve">
+				<source>Performed therapies cats (female) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.therapy_team_cat_male" xml:space="preserve">
+				<source>Performed therapies cats (male) (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_team_done" xml:space="preserve">
+				<source>Released animals (by release date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_staystatus" xml:space="preserve">
+				<source>Animals by stay status (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_therapystatus" xml:space="preserve">
+				<source>Animals by therapy status (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_therapyteam" xml:space="preserve">
+				<source>Animals in therapy by last doctor (at least one operation performed)</source>
+			</trans-unit>
+			<trans-unit id="report.gender." xml:space="preserve">
+				<source>Unknown</source>
+			</trans-unit>
+			<trans-unit id="report.gender.m" xml:space="preserve">
+				<source>Male</source>
+			</trans-unit>
+			<trans-unit id="report.gender.f" xml:space="preserve">
+				<source>Female</source>
+			</trans-unit>
+			<trans-unit id="report.source.web" xml:space="preserve">
+				<source>Web</source>
+			</trans-unit>
+			<trans-unit id="report.source.app" xml:space="preserve">
+				<source>App</source>
+			</trans-unit>
+			<trans-unit id="report.withOwner" xml:space="preserve">
+				<source>With owner</source>
+			</trans-unit>
+			<trans-unit id="report.withoutOwner" xml:space="preserve">
+				<source>Without owner</source>
+			</trans-unit>
+			<trans-unit id="report.species_source" xml:space="preserve">
+				<source>Animals by source (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_ownerstat" xml:space="preserve">
+				<source>Animals by owner status (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_gender" xml:space="preserve">
+				<source>Animals by gender</source>
+			</trans-unit>
+			<trans-unit id="report.species_sterilisation" xml:space="preserve">
+				<source>Sterilised animals (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.species_vaccination" xml:space="preserve">
+				<source>Vaccinated animals (by treatment date)</source>
+			</trans-unit>
+			<trans-unit id="report.animals" xml:space="preserve">
+				<source>Animals</source>
+			</trans-unit>
+			<trans-unit id="report.animals_withowner" xml:space="preserve">
+				<source>Owners</source>
+			</trans-unit>
+			<trans-unit id="report.recs" xml:space="preserve">
+				<source>RECS</source>
+			</trans-unit>
+			<trans-unit id="report.species_tagtype" xml:space="preserve">
+				<source>Used tags (by catch date)</source>
+			</trans-unit>
+			<trans-unit id="report.tagType.0" xml:space="preserve">
+				<source>None</source>
+			</trans-unit>
+			<trans-unit id="report.tagType.1" xml:space="preserve">
+				<source>Ear tag</source>
+			</trans-unit>
+			<trans-unit id="report.tagType.2" xml:space="preserve">
+				<source>RFID</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,31 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>{namespace dl=DLigo\Animaltool\ViewHelpers}<f:if condition="{tables}"><f:for each="{tables}" as="table">#;<f:for each="{table.head.col}" as="head" iteration="colit">{head};<f:if condition="{colit.isLast}">{f:translate(id:'report.total')}</f:if></f:for>
+<f:for each="{table.head.row}" as="row" key="rowid" iteration="rowit">{row};<f:for each="{table.head.col}" as="col" key="colid" iteration="colit">{dl:array(obj:table.data,prop:{0:'{rowid}',1:'{colid}'})};<f:if condition="{colit.isLast}">{dl:array(obj:table.total.row,prop:rowid)}</f:if></f:for>
+<f:if condition="{rowit.isLast}">{f:translate(id:'report.total')};<f:for each="{table.total.col}" as="col" iteration="colit">{col};<f:if condition="{colit.isLast}">{table.total.total}</f:if></f:for>
+</f:if></f:for>
+</f:for></f:if><f:if condition="{animals}">#{f:translate(id:'animal.boxID')};{f:translate(id:'animal.tag')};{f:translate(id:'animal.bread')};{f:translate(id:'animal.color')};{f:translate(id:'animal.gender')};{f:translate(id:'animal.weight')};{f:translate(id:'animal.therapyStatus')};{f:translate(id:'animal.stayStatus')};{f:translate(id:'animal.healthCondition')};{f:translate(id:'animal.cachedate')};{f:translate(id:'animal.treatdate')};{f:translate(id:'animal.isPrivate')};{f:translate(id:'animal.hasgps')}<f:for each="{animals}" as="animal">
+"{animal.boxID}";"<dl:override value="{animal.rFID}" altValue="{animal.earTag}" />";"{dl:override(value:animal.bread,altValue:animal.species)}";"{animal.color.name}";"{dl:array(obj:animal.genders,prop:animal.gender)}";"{animal.weight}";"{dl:array(obj:animal.therapyStatuses,prop:animal.therapyStatus)}";"{dl:array(obj:animal.stayStatuses,prop:animal.stayStatus)}";"{dl:array(obj:animal.healthConditions,prop:animal.healthCondition)}";"{animal.actions.0.date -> f:format.date(format:'Y-m-d')}";"{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}";"{f:if(condition:"{animal.isPrivate}",then:"{f:translate(id:'yes')}",else:"{f:translate(id:'no')}")}";"{f:if(condition:"{animal.actions.0.hasGPS}",then:"{f:translate(id:'yes')}",else:"{f:translate(id:'no')}")}"</f:for></f:if><f:if condition="{animals_withowner}">#{f:translate(id:'animal.boxID')};{f:translate(id:'animal.tag')};{f:translate(id:'animal.bread')};{f:translate(id:'animal.weight')};{f:translate(id:'animal.cachedate')};{f:translate(id:'animal.treatdate')};{f:translate(id:'owner.firstname')};{f:translate(id:'owner.name')};{f:translate(id:'owner.phone')};{f:translate(id:'owner.street')};{f:translate(id:'owner.houseNumber')};{f:translate(id:'owner.city')}<f:for each="{animals_withowner}" as="animal">
+"{animal.boxID}";"<dl:override value="{animal.rFID}" altValue="{animal.earTag}" />";"{dl:override(value:animal.bread,altValue:animal.species)}";"{animal.weight}";"{animal.actions.0.date -> f:format.date(format:'Y-m-d')}";"{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}";"{animal.owner.firstName}";"{animal.owner.name}";"{animal.owner.phone}";"{animal.owner.street}";"{animal.owner.houseNumber}";"{animal.owner.city}"</f:for></f:if><f:if condition="{recs}">#{f:translate(id:'owner.cNP')};{f:translate(id:'owner.firstname')};{f:translate(id:'owner.name')};{f:translate(id:'owner.iDNumber')};{f:translate(id:'owner.region')};{f:translate(id:'owner.city')};{f:translate(id:'owner.street')};{f:translate(id:'owner.houseNumber')};{f:translate(id:'owner.phone')};{f:translate(id:'animal.tag')};{f:translate(id:'animal.bread')};{f:translate(id:'animal.gender')};{f:translate(id:'animal.birthday')};{f:translate(id:'animal.treatdate')};{f:translate(id:'owner.passId')};{f:translate(id:'animal.color')};{f:translate(id:'animal.size')}<f:for each="{recs}" as="animal">
+"{animal.owner.cNP}";"{animal.owner.firstName}";"{animal.owner.name}";"{animal.owner.idNumber}";"{animal.owner.region}";"{animal.owner.city}";"{animal.owner.street}";"{animal.owner.houseNumber}";"{animal.owner.phone}";"<dl:override value="{animal.rFID}" altValue="{animal.earTag}" />";"{dl:override(value:animal.bread,altValue:animal.species)}";"{dl:array(obj:animal.genders,prop:animal.gender)}";"{animal.birthday -> f:format.date(format:'Y-m-d')}";"{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}";"{animal.owner.passId}";"{animal.color.name}";"{animal.size}"</f:for></f:if>

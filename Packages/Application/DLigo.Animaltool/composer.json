@@ -1,0 +1,14 @@
+{
+    "name": "dligo/animaltool",
+    "type": "typo3-flow-package",
+    "description": "Add description here",
+    "require": {
+        "typo3/flow": "*",
+        "typo3/imagine": "*"        
+    },
+    "autoload": {
+        "psr-0": {
+            "DLigo\\Animaltool": "Classes"
+        }
+    }
+}

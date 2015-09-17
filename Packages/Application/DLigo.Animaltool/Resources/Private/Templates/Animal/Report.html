@@ -1,0 +1,593 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">
+  <f:if condition="{session.location}">
+    <f:then>
+      {f:translate(id:'report.list',arguments:{0:'{session.location}'})}
+    </f:then>
+    <f:else>
+      {f:translate(id:'report.list.all')}
+    </f:else>
+  </f:if>
+</f:section>
+<f:section name="Content">
+  <h1><f:render section="Title" arguments="{session:session}"/></h1>
+  <div id="date">
+    <f:render partial="FormErrors" arguments="{for: 'from',model:'report'}" />
+    <f:render partial="FormErrors" arguments="{for: 'to',model:'report'}" />
+    <f:form action="report" id="report-date-form" class="date-form">
+  		<label for="from">{f:translate(id:'report.from')}</label><f:form.textfield type="date" value="{f:format.date(date: '{from}', format: 'Y-m-d')}" id="from" name="from" class="date-input" />
+  		<label for="to">{f:translate(id:'report.to')}</label><f:form.textfield type="date" value="{f:format.date(date: '{to}', format: 'Y-m-d')}" id="to" name="to" class="date-input" />
+      <fieldset class="report-type">
+        <f:form.radio id="report-advanced" name="reportType" value="0" checked="{f:if(condition:'{reportType}==0',then:'true',else:'false')}"/><label for="report-advanced">{f:translate(id:'report.advanced')}</label>
+        <f:form.radio id="report-simple" name="reportType" value="1" checked="{f:if(condition:'{reportType}==1',then:'true',else:'false')}"/><label for="report-simple">{f:translate(id:'report.simple')}</label>
+        <f:form.radio id="report-list" name="reportType" value="2" checked="{f:if(condition:'{reportType}==2',then:'true',else:'false')}"/><label for="report-list">{f:translate(id:'report.oalist')}</label>
+      </fieldset>
+  		<f:form.submit value="{f:translate(id:'report.button')}" class="button" />
+  	</f:form>
+  </div>
+	<f:if condition="{report}">
+		<f:then>
+      <f:if condition="{reportType}==1">
+    		<f:then>
+          <div class="report">
+            <f:form action="report" format="csv" id="report-export-simple" additionalAttributes="{target:'_blank'}">
+         		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+	            <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+              <f:form.hidden name="reportType" value="1" />
+	            <f:form.submit value="{f:translate(id:'report.export.all')}" class="button" />
+        	  </f:form>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_source')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_source}',hideTotalCol:true}" />
+            <f:if condition="{species_source}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_source" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="100" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_ownerstat')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_ownerstat}',hideTotalCol:true}" />
+            <f:if condition="{species_ownerstat}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_ownerstat" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="101" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_gender')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_gender}',hideTotalCol:true}" />
+             <f:if condition="{species_gender}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_gender" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="102" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+         </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_sterilisation')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_gender_sterilisation}',hideTotalCol:true}" />
+            <f:if condition="{species_gender_sterilisation}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_gender_sterilisation" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="103" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_vaccination')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_gender_vaccination}',hideTotalCol:true}" />
+            <f:if condition="{species_gender_vaccination}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_gender_vaccination" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="104" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_staystatus')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_staystatus}',hideTotalCol:true}" />
+            <f:if condition="{species_staystatus}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_staystatus" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="105" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+  		  </f:then>
+      </f:if>
+      <f:if condition="{reportType}==0">
+    		<f:then>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team}'}" />
+            <f:if condition="{species_team}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="200" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team_female')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team_female}'}" />
+            <f:if condition="{species_team_female}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team_female" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="210" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team_male')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team_male}'}" />
+            <f:if condition="{species_team_male}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team_male" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="211" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team_owner')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team_owner}'}" />
+            <f:if condition="{species_team_owner}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team_owner" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="201" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team_noowner')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team_noowner}'}" />
+            <f:if condition="{species_team_noowner}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team_noowner" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="202" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team}'}" />
+            <f:if condition="{therapy_team}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="203" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_female')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_female}'}" />
+            <f:if condition="{therapy_team_female}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_female" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="204" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_male')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_male}'}" />
+            <f:if condition="{therapy_team_male}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_male" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="205" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_dog')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_dog}'}" />
+            <f:if condition="{therapy_team_dog}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_dog" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="212" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_dog_female')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_dog_female}'}" />
+            <f:if condition="{therapy_team_dog_female}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_dog_female" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="213" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_dog_male')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_dog_male}'}" />
+            <f:if condition="{therapy_team_dog_male}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_dog_male" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="214" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_cat')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_cat}'}" />
+            <f:if condition="{therapy_team_cat}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_cat" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="215" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_cat_female')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_cat_female}'}" />
+            <f:if condition="{therapy_team_cat_female}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_cat_female" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="216" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.therapy_team_cat_male')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{therapy_team_cat_male}'}" />
+            <f:if condition="{therapy_team_cat_male}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-therapy_team_cat_male" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="217" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_team_done')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_team_done}'}" />
+            <f:if condition="{species_team_done}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_team_done" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="206" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_staystatus')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_staystatus}'}" />
+            <f:if condition="{species_staystatus}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_staystatus" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="207" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_therapystatus')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_therapystatus}'}" />
+            <f:if condition="{species_therapystatus}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_therapystatus" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="208" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_tagtype')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_tagtype}',hideTotalCol:true}" />
+            <f:if condition="{species_tagtype}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_tagtype" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="218" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+<f:comment>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.species_therapyteam')}</h2>
+            <f:render partial="ReportTable" arguments="{table:'{species_therapyteam}'}" />
+            <f:if condition="{species_therapyteam}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-species_therapyteam" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="209" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+</f:comment>
+  		  </f:then>
+      </f:if>
+      <f:if condition="{reportType}==2">
+    		<f:then>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.animals')}</h2>
+      			<table class="report-animal-list" cellpadding="0" cellspacing="0">
+    					<tr class="report-head">
+                <th class="col-boxid">{f:translate(id:'animal.boxID')}</th>
+                <th class="col-rfideartag">{f:translate(id:'animal.tag')}</th>
+                <th class="col-bread">{f:translate(id:'animal.bread')}</th>
+                <th class="col-color">{f:translate(id:'animal.color')}</th>
+                <th class="col-gender">{f:translate(id:'animal.gender')}</th>
+                <th class="col-weight">{f:translate(id:'animal.weight')}</th>
+                <th class="col-therapystatus">{f:translate(id:'animal.therapyStatus')}</th>
+                <th class="col-staystatus">{f:translate(id:'animal.stayStatus')}</th>
+                <th class="col-healthcondition">{f:translate(id:'animal.healthCondition')}</th>
+                <th class="col-cached">{f:translate(id:'animal.cachedate')}</th>
+                <th class="col-treated">{f:translate(id:'animal.treatdate')}</th>
+                <th class="col-isprivate">{f:translate(id:'animal.isPrivate')}</th>
+                <th class="col-gps">{f:translate(id:'animal.hasgps')}</th>
+    					</tr>
+  		    		<f:for each="{animals}" as="animal">
+              <f:cycle values="{0:'odd',1:'even'}" as="zebraClass">
+      				<tr class="{zebraClass}">
+              </f:cycle>
+                <td class="col-boxid">{animal.boxID}</td>
+                <td class="col-rfideartag"><dl:override value="{animal.rFID}" altValue="{animal.earTag}" /></td>
+                <td class="col-bread">{dl:override(value:animal.bread,altValue:animal.species)}</td>
+                <td class="col-color">{animal.color.name}</td>
+                <td class="col-gender">{dl:array(obj:animal.genders,prop:animal.gender)}</td>
+                <td class="col-weight">{animal.weight}</td>
+                <td class="col-therapystatus">{dl:array(obj:animal.therapyStatuses,prop:animal.therapyStatus)}</td>
+                <td class="col-staystatus">{dl:array(obj:animal.stayStatuses,prop:animal.stayStatus)}</td>
+                <td class="col-healthcondition">{dl:array(obj:animal.healthConditions,prop:animal.healthCondition)}</td>
+                <td class="col-cached">{animal.actions.0.date -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-treated">{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-isprivate">{f:if(condition:"{animal.isPrivate}",then:"{f:translate(id:'yes')}",else:"{f:translate(id:'no')}")}</td>
+                <td class="col-gps">{f:if(condition:"{animal.actions.0.hasGPS}",then:"{f:translate(id:'yes')}",else:"{f:translate(id:'no')}")}</td>
+    					</tr>
+				    </f:for>
+			      </table>            
+            <f:if condition="{animals}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-animals" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="300" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+              <f:form action="report" format="pdf" id="report-pdf-animals">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="300" />
+  		          <f:form.submit value="{f:translate(id:'report.pdf')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.animals_withowner')}</h2>
+      			<table class="report-animal-owner-list" cellpadding="0" cellspacing="0">
+    					<tr class="report-head">
+                <th class="col-boxid">{f:translate(id:'animal.boxID')}</th>
+                <th class="col-rfideartag">{f:translate(id:'animal.tag')}</th>
+                <th class="col-bread">{f:translate(id:'animal.bread')}</th>
+                <th class="col-weight">{f:translate(id:'animal.weight')}</th>
+                <th class="col-cached">{f:translate(id:'animal.cachedate')}</th>
+                <th class="col-treated">{f:translate(id:'animal.treatdate')}</th>
+                <th class="col-firstname">{f:translate(id:'owner.firstname')}</th>
+                <th class="col-name">{f:translate(id:'owner.name')}</th>
+                <th class="col-phone">{f:translate(id:'owner.phone')}</th>
+                <th class="col-street">{f:translate(id:'owner.street')}</th>
+                <th class="col-housenumber">{f:translate(id:'owner.houseNumber')}</th>
+                <th class="col-city">{f:translate(id:'owner.city')}</th>
+    					</tr>
+  		    		<f:for each="{animals_withowner}" as="animal">
+              <f:cycle values="{0:'odd',1:'even'}" as="zebraClass">
+      				<tr class="{zebraClass}">
+              </f:cycle>
+                <td class="col-boxid">{animal.boxID}</td>
+                <td class="col-rfideartag"><dl:override value="{animal.rFID}" altValue="{animal.earTag}" /></td>
+                <td class="col-bread">{dl:override(value:animal.bread,altValue:animal.species)}</td>
+                <td class="col-weight">{animal.weight}</td>
+                <td class="col-cached">{animal.actions.0.date -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-treated">{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-firstname">{animal.owner.firstName}</td>
+                <td class="col-name">{animal.owner.name}</td>
+                <td class="col-phone">{animal.owner.phone}</td>
+                <td class="col-street">{animal.owner.street}</td>
+                <td class="col-housenumber">{animal.owner.houseNumber}</td>
+                <td class="col-city">{animal.owner.city}</td>
+    					</tr>
+				    </f:for>
+			      </table>            
+            <f:if condition="{animals_withowner}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-animals_withowners" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="301" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+          <div class="report">
+            <h2 class="report-table-title">{f:translate(id:'report.recs')}</h2>
+      			<table class="report-recs-list" cellpadding="0" cellspacing="0">
+    					<tr class="report-head">
+                <th class="col-cnp">{f:translate(id:'owner.cNP')}</th>
+                <th class="col-firstname">{f:translate(id:'owner.firstname')}</th>
+                <th class="col-name">{f:translate(id:'owner.name')}</th>
+                <th class="col-idnumber">{f:translate(id:'owner.iDNumber')}</th>
+                <th class="col-region">{f:translate(id:'owner.region')}</th>
+                <th class="col-city">{f:translate(id:'owner.city')}</th>
+                <th class="col-street">{f:translate(id:'owner.street')}</th>
+                <th class="col-housenumber">{f:translate(id:'owner.houseNumber')}</th>
+                <th class="col-phone">{f:translate(id:'owner.phone')}</th>
+                <th class="col-rfideartag">{f:translate(id:'animal.tag')}</th>
+                <th class="col-bread">{f:translate(id:'animal.bread')}</th>
+                <th class="col-gender">{f:translate(id:'animal.gender')}</th>
+                <th class="col-birthday">{f:translate(id:'animal.birthday')}</th>
+                <th class="col-treated">{f:translate(id:'animal.treatdate')}</th>
+                <th class="col-passid">{f:translate(id:'owner.passId')}</th>
+                <th class="col-color">{f:translate(id:'animal.color')}</th>
+                <th class="col-size">{f:translate(id:'animal.size')}</th>
+    					</tr>
+  		    		<f:for each="{recs}" as="animal">
+              <f:cycle values="{0:'odd',1:'even'}" as="zebraClass">
+      				<tr class="{zebraClass}">
+              </f:cycle>
+                <td class="col-cnp">{animal.owner.cNP}</td>
+                <td class="col-firstname">{animal.owner.firstName}</td>
+                <td class="col-name">{animal.owner.name}</td>
+                <td class="col-idnumber">{animal.owner.idNumber}</td>
+                <td class="col-region">{animal.owner.region}</td>
+                <td class="col-city">{animal.owner.city}</td>
+                <td class="col-street">{animal.owner.street}</td>
+                <td class="col-housenumber">{animal.owner.houseNumber}</td>
+                <td class="col-phone">{animal.owner.phone}</td>
+                <td class="col-rfideartag"><dl:override value="{animal.rFID}" altValue="{animal.earTag}" /></td>
+                <td class="col-bread">{dl:override(value:animal.bread,altValue:animal.species)}</td>
+                <td class="col-gender">{dl:array(obj:animal.genders,prop:animal.gender)}</td>
+                <td class="col-birthday">{animal.birthday -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-treated">{animal.treatments.0.startDate -> f:format.date(format:'Y-m-d')}</td>
+                <td class="col-passid">{animal.owner.passId}</td>
+                <td class="col-color">{animal.color.name}</td>
+                <td class="col-size">{animal.size}</td>
+    					</tr>
+				    </f:for>
+			      </table>            
+            <f:if condition="{recs}">
+    	     	<f:then>
+              <f:form action="report" format="csv" id="report-export-recs" additionalAttributes="{target:'_blank'}">
+          		  <f:form.hidden value="{f:format.date(date: '{from}', format: 'Y-m-d')}" name="from" />
+  		          <f:form.hidden value="{f:format.date(date: '{to}', format: 'Y-m-d')}" name="to" />
+                <f:form.hidden name="reportType" value="302" />
+  		          <f:form.submit value="{f:translate(id:'report.export')}" class="button" />
+          	  </f:form>
+     		    </f:then>
+            </f:if>
+          </div>
+  		  </f:then>
+      </f:if>
+		</f:then>
+		<f:else>
+			<p>{f:translate(id:'report.none')}</p>
+		</f:else>
+	</f:if>
+</f:section>

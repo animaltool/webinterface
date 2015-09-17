@@ -1,0 +1,831 @@
+/*************************************************************************
+*  Copyright notice
+*
+*  (c) 2015 [d] Ligo design+development - All rights reserved
+*  (Details on https://github.com/animaltool)
+*
+*  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+*  The DLigo Animaltool project is free software; you can redistribute
+*  it and/or modify it under the terms of the GNU Lesser General Public
+*  License (GPL) as published by the Free Software Foundation; either
+*  version 3 of the License, or  (at your option) any later version.
+*
+*  The GNU General Public License can be found at
+*  http://www.gnu.org/copyleft/gpl.html.
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+*************************************************************************/
+
+.clearer {
+    clear: both;
+}
+html, body {
+    background:  repeat-x scroll 0 0 #ffffff;
+    color: #444;
+    font-family: Verdana,Helvetica,Geneva,Arial,sans-serif;
+    font-size: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Verdana,Helvetica,Geneva,Arial,sans-serif;
+    margin: 0 0 -10px;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+a {
+    color: #8F8F8F;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+img {
+    border: 0 none;
+}
+label {
+    color: #999;
+}
+.col-photo img,img.form-photo {
+  max-width:200px;
+  max-height:200px;
+} 
+
+input, select, textarea, checkbox {
+  border-color: #ccc;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -moz-box-shadow:0 3px 5px -2px #aaaaaa inset;
+  box-shadow:0 3px 5px -2px #aaaaaa inset;
+  padding:3px;
+  font-size:12px;
+  font-family:verdana;
+}
+textarea {
+  margin:0;
+}
+input {
+  height:17px;
+}
+select {
+  height:25px;
+}
+checkbox, .field-checkbox input, .field-radio input,.form-simple .field-checkbox input, .form-simple .field-radio input {
+  height:25px;
+  width:auto;
+  margin:0;
+  margin-right:5px;
+}
+.field-checkbox label, .field-radio label, .form-simple .field-checkbox label, .form-simple .field-radio label {
+  line-height:25px;
+    color: 999;
+}
+.field-upload input {
+  padding:0;
+    box-shadow: none;
+    border: none;
+  height:25px;
+}
+
+
+.form-simple .field-checkbox label, .form-simple .field-radio label {
+  width:230px;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+input:focus, select:focus, textarea:focus, checkbox:focus {
+    border-color: #FFC600;
+}
+form {
+margin: 0 auto;
+text-align: left;
+}
+.main form {
+  max-width:1000px;
+}
+fieldset {
+  padding:0;
+  border:0;
+}
+fieldset legend {
+font-size: 1.5em;
+font-family: Arial,Verdana,Helvetica,Geneva,sans-serif;
+color: #8AA73B;
+line-height:1.2;
+margin-bottom:0;
+}
+.fieldset-radio fieldset legend {
+font-size: 12px;
+font-family: Verdana,Helvetica,Geneva,sans-serif;
+color: #333333;
+line-height:16px;
+margin-bottom:0;
+}
+label {
+display: inline-block;
+vertical-align: top;
+width:100%;
+}
+form img {
+display: inline-block;
+}
+li, ul, ol {
+    list-style-type: none;
+    margin: 0;
+padding: 0;
+}
+
+nav {
+    display: block;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+h1 {
+font-size: 2em;
+font-family: Arial,Verdana,Helvetica,Geneva,sans-serif;
+color: #8AA73B;
+line-height:1.2;
+}    
+.simple h1 {
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align:left;
+  margin-top:40px;
+}
+
+input.button, input.form-buttons, .form-buttons input {
+  height: 27px;
+  background: none repeat scroll 0 0 #8aa73b;
+  font-weight: bold;
+  -moz-box-shadow:0 3px 5px -2px #aaaaaa;
+  box-shadow:0 3px 5px -2px #aaaaaa;
+  border:0;
+  color:#ffffff;
+  margin-bottom:3px;
+  cursor:pointer;
+}
+
+input.button:focus, input.form-buttons:focus, .form-buttons input:focus {
+  -moz-box-shadow:none;
+  box-shadow:none;
+  position:relative;
+  top:3px;
+}
+a.link-button,.animal-list td.col-boxid a {
+  height: 15px;
+  line-height:15px;
+  padding:3px;
+  background: none repeat scroll 0 0 #8aa73b;
+  font-weight: bold;
+  -moz-box-shadow:0 3px 5px -2px #aaaaaa;
+  box-shadow:0 3px 5px -2px #aaaaaa;
+  border-color:#8aa73b;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px:
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  color:#ffffff;
+  margin-bottom:3px;
+  display:inline-block;
+  white-space:nowrap;
+  vertical-align:top;
+  text-align:center;
+}
+a.link-button:focus {
+  -moz-box-shadow:none;
+  box-shadow:none;
+  position:relative;
+  top:3px;
+}
+input.cancel-button {
+  height: 29px;
+  background: none repeat scroll 0 0 #bbb;
+  font-weight: bold;
+  -moz-box-shadow:0 3px 5px -2px #aaaaaa;
+  box-shadow:0 3px 5px -2px #aaaaaa;
+  border:0;
+  color:#ffffff;
+  margin-bottom:3px;
+  cursor:pointer;
+}
+
+input.cancel-button:focus {
+  -moz-box-shadow:none;
+  box-shadow:none;
+  position:relative;
+  top:0px;
+  margin-bottom:0px;
+}
+
+
+li.flashmessage {
+margin: 10px auto;
+}
+
+.flash-OK{
+    width:auto;
+    display:inline-block;
+    background: #eeffee;
+    border-color: #8aa73b;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 10px;
+    color: #8aa73b;
+}
+.flash-Error{
+    width:auto;
+    display:inline-block;
+    background: #fff3ee;
+    border-color: #990000;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 10px;
+    color: #990000;
+}
+
+.error-wrap {
+  width:100%;
+  text-align:center;
+}
+.error, .description{
+  width:auto;
+  text-align:left;
+  display:inline-block;
+  background: #fff3ee;
+  border-color: #990000;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 10px;
+  color: #990000;
+  margin:20px auto;
+}
+.form-error {
+  color: #990000;
+}
+.f3-form-error,.form-error-tag input {
+  border-color:#990000;
+}
+
+.form-simple {
+    width: 250px;
+    margin: auto;
+    text-align: left;
+}
+.form-simple fieldset {
+    border: none;
+    margin:0;
+}
+.form-simple input{
+    margin-bottom: 5px;
+    width:242px;
+}
+.form-simple textarea {
+    margin-bottom: 5px;
+    width:242px;
+}
+.form-simple select {
+    margin-bottom: 5px;
+    width:250px;
+}
+.form-simple label span {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-simple .form-buttons input {
+    margin-bottom: 5px;
+    width:250px;
+}
+.form-simple .form-buttons .link-button {
+    margin-bottom: 5px;
+    width:238px;
+}
+.form-simple .form-buttons {
+    clear:both;
+}
+
+.form-simple .list input {
+    width:auto;
+    float:right;
+}
+.form-simple .list a {
+    float:left;
+    line-height:25px;
+}
+.form-simple .list .list-item{
+    clear:both;
+}
+
+#head{
+    background: none repeat scroll 0 0 #333333;
+    display: table;
+    width: 100%;
+    padding:7px 0;
+}
+#quicksearch {
+    float: left;
+    margin: 5px 5px 0 5px;
+}
+#qicksearch-form {
+width:100%;
+}
+#qicksearch-form input {
+float: left;
+margin-right: 5px;
+}
+#qicksearch-form input.button {
+-moz-box-shadow:none;
+box-shadow:none;
+margin-bottom:5px;
+height:25px;
+}
+#qicksearch-form input.button:focus {
+top:0;
+}
+.menu {
+    margin: 5px 0 0 5px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float:right;
+    margin-right:10px;
+}
+.menu ul li {
+  background: none repeat scroll 0 0 #8aa73b;
+  color:#ffffff;
+  border-color:#8aa73b;
+  list-style-type: none;
+  float: left;
+  font-size: 1em;
+  margin: 0 0 5px 5px;
+  padding: 3px 10px;
+  height: 19px;
+  position: relative;
+  border-radius: 3px;
+  border-style: none;
+  border-width: 1px:
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  line-height: 17px;
+  font-weight: normal;
+}
+.menu ul li a {
+    color: #FFFFFF;
+}
+.menu ul li a:hover {
+  color:#dddddd;
+}
+.menu ul li.active {
+    background: none repeat scroll 0 0 #FFC600;
+    color: #000;
+    border-color: #FFC600;
+}
+.menu ul li.active a {
+    color: #000;
+}
+.menu .admin-menu {
+  margin-top:1px;
+}
+.menu .admin-menu li {
+  -moz-box-shadow: 0 0 2px 1px #ff0000;
+  box-shadow:0 0 2px 1px #ff0000;
+}
+
+.main {
+margin:0 10px 20px;
+}
+
+#logo {
+  float:left;
+  margin:5px 5px 0 10px;
+}
+
+#filter {
+    display: block;
+    width: 100%;
+    padding:7px 0;
+}
+.main #animal-filter-form {
+    padding: 10px 0px;
+    width:100%;
+    max-width: 100%;
+}
+
+#animal-filter-form .filter-wrap {
+    list-style-type: none;
+    float: left;
+    background: none repeat scroll 0 0 #eee;
+    color: #666;
+    font-size: 1em;
+    margin: 0 0 7px 3px;
+    padding: 3px 8px 3px 8px;
+    height: 18px;
+    position: relative;
+    border-color: #eee;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    line-height: 17px;
+    font-weight: bold;
+}
+#animal-filter-form .filter-on {
+    border-color: #ffc600;
+    background: #ffc600;
+    color:#333333;
+}
+.filter-wrap.filter-on > label {
+    color: #333;
+}
+#animal-filter-form .filter-on, #animal-filter-form .filter-wrap :hover {
+    color: #333333;
+}
+#animal-filter-form .filter-wrap label {
+  width:auto;  
+}
+#animal-filter-form .filter-wrap .animal-filter-item {
+  display:none;
+}
+#animal-filter-form .filter-label {
+  color:#333333;
+  float: left;
+  line-height:23px;
+  margin-right:5px;
+}
+#animal-filter-form .filter-filters {
+  padding-right:25px;
+  float:left;
+}
+#animal-filter-form #date {
+  margin:auto;
+  float:left;
+}
+#animal-filter-form #date input {
+  display:inline-block;
+  margin:0;
+  width:50px;
+  
+}
+#animal-filter-form #date label {
+  display:inline-block;
+  width:auto;
+  margin-right:5px;
+  line-height:23px;
+}
+#animal-filter-form #date input.button {
+  margin:0 0 8px 0;
+  display:inline-block;
+  float:none;
+  width:auto;
+  height:24px;
+}
+
+table.animal-list, table.history-list, .report table {
+  width: 100%;
+  font-weight: normal;
+  border-collapse:collapse;
+    margin-bottom: 10px;
+}
+
+
+.animal-list th, .history-list th, .report table .report-head th {
+  font-weight: normal;
+  padding: 5px;
+  border:1px solid #999999; 
+  color:#999999; 
+}
+.animal-list tr.head, .history-list tr.head, .report table tr.report-head {
+  -moz-box-shadow:0 3px 5px -2px #aaaaaa;
+  box-shadow:0 3px 5px -2px #aaaaaa;
+}
+
+.report table {
+  margin-bottom:5px;
+}
+.report table th.report-row-head {
+    background: #FFC600;
+    font-weight: normal;
+    text-align:left;
+}
+.report table .row-total th {
+    background: #FFC600;
+    text-align:left;
+    border:none;
+}
+.report table .row-total td,.report table td.col-total,.report table th.col-total  {
+    font-weight: bold;
+}
+.animal-list tr td, .history-list tr td, .report table tr td{
+    border:1px solid #ccc;
+}
+.animal-list tr.even, .history-list tr.even, .report table tr.even{
+    background: #eee;
+}
+.animal-list tr.odd, .history-list tr.odd, .report table tr.odd{
+    background: #fff;
+}
+.animal-list tr:hover, .history-list tr:hover, .report table tr:hover{
+    background: #bbb;
+}
+.animal-list tr.head:hover, .history-list tr.head:hover, .report table tr.report-head:hover{
+    background: #fff;
+}
+
+.animal-list td a {
+    color: #000;
+    margin: 0 0 5px 5px;
+    padding: 3px 10px;
+    height: 17px;
+    line-height: 16px;
+    font-weight: normal;
+}
+
+.animal-list td.col-photo {
+    width: 180px;
+}
+.animal-list td.col-photo a {
+    padding: 0px;
+    margin:0px;
+}
+.animal-list td.col-photo img {
+    padding: 10px 9px 7px 10px;
+    margin:0px;
+}
+.animal-list th.col-height, .animal-list th.col-weight, .animal-list th.col-name, .animal-list td.col-height, .animal-list td.col-weight, .animal-list td.col-name {
+    display: none;
+}
+
+.animal-list td a.link-button, .animal-list td.col-boxid a {
+  height: 15px;
+  line-height:15px;
+  color:#ffffff;
+  font-weight: normal;
+  width:43px;
+  margin-left:5px;
+  text-align:center;
+  padding:3px;
+  margin-bottom:3px;
+  background:#8aa73b;
+}
+.col-boxid {
+    padding: 0 5px 0 0;
+}
+.animal-list td .button {
+  width:55px;
+}
+.animal-list tr:hover td a.link-button, .animal-list tr:hover td .button,.animal-list tr:hover td.col-boxid a {
+  -moz-box-shadow:0 3px 5px -2px #225522;
+  box-shadow:0 3px 5px -2px #225522;
+}
+
+.form-buttons {
+border-top: solid 10px transparent;
+border-bottom: solid 10px transparent;
+}
+
+a.cancel-button {
+    background: none repeat scroll 0 0 #8aa73b;
+    border-color: #8aa73b;
+    border-radius: 5px;
+    border-style: solid;
+    color: #000;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    height: 17px;
+    line-height: 16px;
+    margin: 0 0 5px 5px;
+    padding: 3px 10px;
+    white-space: nowrap;
+width: 60px;
+}
+
+.col-admin {
+    max-width: 200px;
+}
+.col-admin > form {
+    display: inline;
+}
+.typo3-widget-paginator {
+  clear:both;
+}
+.typo3-widget-paginator li {
+  display:inline;
+  margin: 0 5px 0;
+}
+
+.typo3-widget-paginator li.current {
+  border-top: 3px solid #ffc600;
+    font-weight: bold;
+    margin-right: 8px;
+    padding: 0 0 0 6px;
+}
+.animal-duplicate-wrapper {
+  text-align: left;
+  width:800px;
+  margin:auto;
+  clear:both;
+}
+.animal-duplicate {
+  float:left;
+  width:400px;
+} 
+.dupl-top {
+  color:#999;
+  text-transform:upper;
+}
+.dupl-head {
+  font-size: 1.5em;
+  font-family: Arial,Verdana,Helvetica,Geneva,sans-serif;
+  color: #8AA73B;
+    padding: 10px 0;
+}
+.dupl-label {
+  float:left;
+  width:100px;
+  clear:both;
+  font-weight:bold;
+}
+.dupl-value {
+  float:left;
+}
+.form-area {
+  border-top:1px solid #ccc;
+  margin:10px auto;
+  padding-top:5px;
+  clear:both;
+}
+.field-tryagain.field.field-textfield > input {
+    width: 100px;
+}
+.field-tryagain label {
+    width: 242px;
+}
+.form-area-right {
+  float:right;
+}
+.duplicate-form-retry {
+  float:right;
+  margin-right:5px;
+}
+.duplicate-form-retry li {
+  float:left;
+  margin-right:5px;
+}
+.duplicate-form-merge {
+  float:right;
+}
+.duplicate-form-merge imput {
+  margin-left:5px;
+}
+.duplicate-form-retry label {
+  margin-top:0;
+}
+
+.form-right {
+  float:right;
+  width:200px;
+  margin: 76px 0 0 10px;
+}
+.form-right .field input {
+  width:192px;
+}
+.form-new .field-photo.field.field-upload {
+    background: none repeat scroll 0 0 #ccc;
+    display: block;
+    height: 173px;
+    padding: 10px;
+    margin-top: 0px;
+}
+.form-new .form-right .field input {
+    width: 111px;
+}
+
+.form-edit .form-right {
+    margin-top: 0;
+}
+.form-edit .form-photo {
+    margin-top:46px;
+}
+
+.form-left {
+  float:left;
+  width:184px;
+  margin-right:10px;
+}
+.form-left-2 {
+  width:378px;
+}
+
+.form-left .field input {
+  width:176px;
+}
+.form-left .field select {
+  width:184px;
+}
+.form-left .field textarea {
+  width:176px;
+}
+.form-left-2 .field textarea {
+  width:378px;
+}
+
+.field label, .fieldset-radio fieldset legend  {
+  margin-top:10px;
+  margin-bottom:5px;
+}
+.form-left checkbox,.form-left .field-checkbox input,.form-left .field-radio input {
+  width:auto;
+}
+.form-left .field-checkbox label,.form-left .field-radio label{
+  width:162px;
+  margin:0
+}
+
+.textarea-1 textarea {
+  height:17px;
+}
+.textarea-2 textarea {
+  height:73px;
+}
+.textarea-3 textarea {
+  height:129px;
+}
+.textarea-4 textarea {
+  height:185px;
+}
+
+.multiselect-2 select {
+  height:81px;
+}
+.multiselect-3 select {
+  height:137px;
+}
+.multiselect-4 select {
+  height:193px;
+}
+
+.form-nl {
+  border-top:1px solid #ccc;
+  margin-top:10px;
+  padding-top:10px;
+  clear:both;
+}
+.form-clear {
+  clear:both;
+}
+
+.form-left-mtop {
+  margin-top:5px;
+}
+
+.date-form {
+  margin:10px auto;
+  display:inline-block;
+}
+.date-form label{
+  width:auto;
+  margin-right:10px;
+  line-height:25px;  
+}
+
+span.property {
+  line-height:25px;
+}
+
+input.button, input.form-buttons, .form-buttons input, a.link-button,.menu a,
+#animal-filter-form .filter-wrap label, .animal-list td.col-boxid a {
+  font-family:arial;
+  font-size:13px;
+ font-weight: normal;
+}

@@ -1,0 +1,53 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id:'external.list')}</f:section>
+
+<f:section name="Content">
+  <h1><f:render section="Title" /></h1>
+  <div class="form-simple">
+	<f:if condition="{externals}">
+		<f:then>
+    <f:widget.paginate objects="{externals}" as="externals_p" configuration="{insertAbove:true,itemsPerPage:25,maximumNumberOfLinks:20}">
+			<ul class="list-external list">
+				<f:for each="{externals_p}" as="external">
+					<li class="list-item">
+						<f:link.action action="edit" arguments="{external: external}">{external}</f:link.action>
+						<f:form action="delete" arguments="{external: external}">
+						  <f:form.submit value="{f:translate(id:'delete')}" class="button confirm"/>
+						</f:form>
+					</li>
+				</f:for>
+			</ul>
+    </f:widget.paginate> 
+		</f:then>
+		<f:else>
+			<p>{f:translate(id:'external.none')}</p>
+		</f:else>
+	</f:if>
+  </div>
+</f:section>

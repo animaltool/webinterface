@@ -1,0 +1,82 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id:'location.edit',arguments:{0:'{location.name}'})}</f:section>
+
+<f:section name="Content">
+  <f:render partial="FormErrors" arguments="{for: 'location'}" />
+  <h1><f:render section="Title" arguments="{location:location}" /></h1>
+	<f:form action="update" object="{location}" objectName="location" class="form-edit">
+		<ul class="form-left">
+			<li class="field-name field field-textfield">
+				<label for="name">{f:translate(id:'location.name')}</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+		
+			<li class="field-country field field-textfield">
+				<label for="country">{f:translate(id:'location.country')}</label>
+				<f:form.textfield property="country" id="country" />
+			</li>
+		
+			<li class="field-region field field-textfield">
+				<label for="region">{f:translate(id:'location.region')}</label>
+				<f:form.textfield property="region" id="region" />
+			</li>
+		
+			<li class="field-zipcode field field-textfield">
+				<label for="zipCode">{f:translate(id:'location.zipCode')}</label>
+				<f:form.textfield property="zipCode" id="zipCode" />
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-city field field-textfield">
+				<label for="city">{f:translate(id:'location.city')}</label>
+				<f:form.textfield property="city" id="city" />
+			</li>
+		
+			<li class="field-citypart field field-textfield">
+				<label for="cityPart">{f:translate(id:'location.cityPart')}</label>
+				<f:form.textfield property="cityPart" id="cityPart" />
+			</li>
+		
+			<li class="field-street field field-textfield">
+				<label for="street">{f:translate(id:'location.street')}</label>
+				<f:form.textfield property="street" id="street" />
+			</li>
+		</ul>
+    <div class="clearer"></div>
+		
+    <div class="form-area">
+			<div class="form-buttons">
+				<div class="form-area-right">
+  				<f:form.submit value="{f:translate(id:'update')}" class="button"/>
+  			</div>
+			</div>
+		</div>      
+	</f:form>
+</f:section>

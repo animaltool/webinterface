@@ -1,0 +1,440 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id:'animal.treat',arguments:{0:'{animal}'})}</f:section>
+
+<f:section name="Content">
+  <f:render partial="FormErrors" arguments="{for: 'tag',model:'animal'}" />
+  <f:render partial="FormErrors" arguments="{for: 'animal'}" />
+  <f:render partial="FormErrors" arguments="{for: 'treatment',model:'animal'}" />
+	<f:form action="treat" object="{animal}" objectName="animal"  enctype="multipart/form-data" id="form-treatment">
+    <f:form.hidden name="origRFID" value="{animal.rFID}"/>
+    <f:form.hidden name="origEarTag" value="{animal.earTag}"/>
+    <f:form.hidden name="useTag" value="{animal.species.useTag}"/>
+    <div class="form-right">
+    <img src="{f:uri.resource(resource: animal.photo, path:'images/clear.gif')}" alt="{animal}"  class="form-photo"/>
+		<ul>
+			<li class="field-photo field field-upload">
+				<label for="photo">{f:translate(id:'animal.photo')}</label>
+        <f:form.upload property="photo" id="photo" />
+			</li>
+		</ul>
+    </div>
+    <h1><f:render section="Title" arguments="{animal:animal}" /></h1>
+		<ul class="form-left">
+			<li class="field-bread field field-select">
+				<label for="bread">{f:translate(id:'animal.bread')}</label>
+				<f:form.select property="bread" options="{breads}" id="bread" />
+			</li>
+		
+			<li class="field-color field field-select">
+				<label for="color">{f:translate(id:'animal.color')}</label>
+				<f:form.select property="color" options="{colors}" id="color" />
+			</li>
+
+			<li class="field-gender field field-select">
+				<label for="gender">{f:translate(id:'animal.gender')}</label>
+				<f:form.select property="gender" options="{genders}" id="gender" />
+			</li>
+			
+			<li class="field-birthday field field-textfield field-date">
+				<label for="birthday">{f:translate(id:'animal.birthday')}</label>
+				<f:form.textfield type="datetime" value="{f:format.date(date: '{animal.birthday}', format: 'Y-m-d')}" property="birthday" id="birthday" />
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+      <f:if condition="{animal.species.useTag}">
+			<li class="field-rfid field field-textfield">
+			 	<label for="tag">{f:translate(id:'animal.tag')}</label>
+        <div class="<f:form.validationResults for="animal">
+  <f:for each="{validationResults.flattenedErrors}" key="propertyName" as="errors">
+    <f:for each="{errors}" as="propertyError">
+      <f:if condition="{propertyError.code}==9996">form-error-tag</f:if>
+    </f:for>
+  </f:for>
+</f:form.validationResults>">
+				<f:form.textfield name="tag" id="tag" value="{dl:FormValue(parameter:'tag',alt:'{dl:override(value:\'{animal.rFID}\',altValue:\'{animal.earTag}\')}')}"/>
+        </div>
+			</li>
+      </f:if>
+
+			<li class="field-weight field field-textfield">
+				<label for="weight">{f:translate(id:'animal.weight')}</label>
+				<f:form.textfield property="weight" id="weight" />
+			</li>
+						
+			<li class="field-specialproperties field field-textarea textarea-2">
+				<label for="specialProperties">{f:translate(id:'animal.specialProperties')}</label>
+				<f:form.textarea property="specialProperties" id="specialProperties" />
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-healthcondition field field-select">
+				<label for="healthCondition">{f:translate(id:'animal.healthCondition')}</label>
+				<f:form.select property="healthCondition" options="{healthConditions}" id="healthCondition" prependOptionLabel=" " />
+			</li>
+
+			<li class="field-comment field field-textarea textarea-3">
+				<label for="comment">{f:translate(id:'animal.comment')}</label>
+				<f:form.textarea property="comment" id="comment" />
+			</li>
+    </ul>      
+    <div class="clearer"></div>      
+    
+      <f:if condition="{animal.isPrivate}">
+  <div class="form-nl">
+    <ul class="">
+			<li class="field-owner-readonly fieldset form-clear">
+        <a href="" class="button toggle" data-toggle="owner-set" data-on="{f:translate(id:'animal.hideOwner')}" data-off="{f:translate(id:'animal.showOwner')}" data-init="off">{f:translate(id:'animal.showOwner')}</a>
+        <fieldset id="owner-set">
+				<legend>{f:translate(id:'animal.owner')}</legend>
+		<ul class="form-left">
+			<li class="field-name field field-textfield">
+				<label for="oname">{f:translate(id:'owner.name')}</label>
+				<span class="property" id="oname">{animal.owner.name}</span>
+			</li>
+		
+			<li class="field-firstname field field-textfield">
+				<label for="ofirstName">{f:translate(id:'owner.firstname')}</label>
+				<span class="property" id="ofirstName">{animal.owner.firstname}</span>
+			</li>
+		
+			<li class="field-idnumber field field-textfield">
+				<label for="oiDNumber">{f:translate(id:'owner.iDNumber')}</label>
+				<span class="property" id="oiDNumber">{animal.owner.iDNumber}</span>
+			</li>
+		
+			<li class="field-cnp field field-textfield">
+				<label for="ocNP">{f:translate(id:'owner.cNP')}</label>
+				<span class="property" id="ocNP">{animal.owner.cNP}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-phone field field-textfield">
+				<label for="ophone">{f:translate(id:'owner.phone')}</label>
+				<span class="property" id="ophone">{animal.owner.phone}</span>
+			</li>
+				
+			<li class="field-street field field-textfield">
+				<label for="ostreet">{f:translate(id:'owner.street')}</label>
+				<span class="property" id="ostreet">{animal.owner.street}</span>
+			</li>
+		
+			<li class="field-housenumber field field-textfield">
+				<label for="ohouseNumber">{f:translate(id:'owner.houseNumber')}</label>
+				<span class="property" id="ohouseNumber">{animal.owner.houseNumber}</span>
+			</li>
+		
+			<li class="field-city field field-textfield">
+				<label for="ocity">{f:translate(id:'owner.city')}</label>
+				<span class="property" id="ocity">{animal.owner.city}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-zipcode field field-textfield">
+				<label for="ozipCode">{f:translate(id:'owner.zipCode')}</label>
+				<span class="property" id="ozipCode">{animal.owner.zipCode}</span>
+			</li>
+		
+			<li class="field-region field field-textfield">
+				<label for="oregion">{f:translate(id:'owner.region')}</label>
+				<span class="property" id="oregion">{animal.owner.region}</span>
+			</li>
+		
+			<li class="field-country field field-textfield">
+				<label for="ocountry">{f:translate(id:'owner.country')}</label>
+				<span class="property" id="ocountry">{animal.owner.country}</span>
+			</li>
+
+			<li class="field-passid field field-textfield">
+				<label for="opassId">{f:translate(id:'owner.passId')}</label>
+				<f:form.textfield name="passId" value="{dl:FormValue(parameter:'passId',alt:'{animal.owner.passId}')}" id="passId" />
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-comment field field-textarea textarea-4">
+				<label for="ocomment">{f:translate(id:'owner.comment')}</label>
+				<span class="property" id="ocomment">{animal.owner.comment}</span>
+			</li>
+		
+		</ul>
+        </fieldset>
+			</li>
+    </div>
+      </f:if>
+                                                                 
+    <f:if condition="{animal.previousExternals}">
+    <div class="form-nl">
+      <f:for each="{animal.previousExternals}" as="external" iteration="it1" reverse="true">
+			<li class="field-prevexternals fieldset form-clear">
+        <fieldset>
+				<legend>{f:translate(id:'animal.prevexternal.{external.externalType}',arguments:{0:'{external.startDate -> f:format.date(format: \'Y-m-d\')}',1:'{external.endDate -> f:format.date(format: \'Y-m-d\')}'})}</legend>
+		<ul class="form-left">
+			<li class="field-name field field-textfield">
+				<label for="ename-{it1.index}">{f:translate(id:'external.name')}</label>
+				<span class="property" id="ename-{it1.index}">{external.name}</span>
+			</li>
+		
+			<li class="field-firstname field field-textfield">
+				<label for="efirstName-{it1.index}">{f:translate(id:'external.firstname')}</label>
+				<span class="property" id="efirstName-{it1.index}">{animal.openExternal.firstname}</span>
+			</li>
+		
+			<li class="field-lastname field field-textfield">
+				<label for="olastName-{it1.index}">{f:translate(id:'external.lastname')}</label>
+				<span class="property" id="elastName-{it1.index}">{external.lastname}</span>
+			</li>
+			
+			<li class="field-phone field field-textfield">
+				<label for="ephone-{it1.index}">{f:translate(id:'external.phone')}</label>
+				<span class="property" id="ephone-{it1.index}">{external.phone}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-street field field-textfield">
+				<label for="estreet-{it1.index}">{f:translate(id:'external.street')}</label>
+				<span class="property" id="estreet-{it1.index}">{external.street}</span>
+			</li>
+		
+			<li class="field-housenumber field field-textfield">
+				<label for="ehouseNumber-{it1.index}">{f:translate(id:'external.houseNumber')}</label>
+				<span class="property" id="ehouseNumber-{it1.index}">{external.houseNumber}</span>
+			</li>
+		
+			<li class="field-city field field-textfield">
+				<label for="ecity-{it1.index}">{f:translate(id:'external.city')}</label>
+				<span class="property" id="ecity-{it1.index}">{external.city}</span>
+			</li>
+		
+			<li class="field-zipcode field field-textfield">
+				<label for="ezipCode-{it1.index}">{f:translate(id:'external.zipCode')}</label>
+				<span class="property" id="ezipCode-{it1.index}">{external.zipCode}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-region field field-textfield">
+				<label for="eregion-{it1.index}">{f:translate(id:'external.region')}</label>
+				<span class="property" id="eregion-{it1.index}">{external.region}</span>
+			</li>
+		
+			<li class="field-country field field-textfield">
+				<label for="ecountry-{it1.index}">{f:translate(id:'external.country')}</label>
+				<span class="property" id="ecountry-{it1.index}">{external.country}</span>
+			</li>
+	
+			<li class="field-comment field field-textarea textarea-2">
+				<label for="ecomment-{it1.index}">{f:translate(id:'external.comment')}</label>
+				<span class="property" id="ecomment-{it1.index}">{external.comment}</span>
+			</li>
+		
+		</ul>
+        </fieldset>
+			</li>
+      </f:for>
+    </div>
+      </f:if>
+      
+      <f:if condition="{animal.openExternal}">
+    <div class="form-nl">
+			<li class="field-external-readonly fieldset form-clear">
+        <fieldset>
+				<legend>{f:translate(id:'animal.inexternal.{animal.openExternal.externalType}',arguments:{0:'{animal.openExternal.startDate -> f:format.date(format: \'Y-m-d\')}'})}</legend>
+		<ul class="form-left">
+			<li class="field-name field field-textfield">
+				<label for="ename">{f:translate(id:'external.name')}</label>
+				<span class="property" id="ename">{animal.openExternal.name}</span>
+			</li>
+		
+			<li class="field-firstname field field-textfield">
+				<label for="efirstName">{f:translate(id:'external.firstname')}</label>
+				<span class="property" id="efirstName">{animal.openExternal.firstname}</span>
+			</li>
+		
+			<li class="field-lastname field field-textfield">
+				<label for="olastName">{f:translate(id:'external.lastname')}</label>
+				<span class="property" id="elastName">{animal.openExternal.lastname}</span>
+			</li>
+			
+			<li class="field-phone field field-textfield">
+				<label for="ephone">{f:translate(id:'external.phone')}</label>
+				<span class="property" id="ephone">{animal.openExternal.phone}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-street field field-textfield">
+				<label for="estreet">{f:translate(id:'external.street')}</label>
+				<span class="property" id="estreet">{animal.openExternal.street}</span>
+			</li>
+		
+			<li class="field-housenumber field field-textfield">
+				<label for="ehouseNumber">{f:translate(id:'external.houseNumber')}</label>
+				<span class="property" id="ehouseNumber">{animal.openExternal.houseNumber}</span>
+			</li>
+		
+			<li class="field-city field field-textfield">
+				<label for="ecity">{f:translate(id:'external.city')}</label>
+				<span class="property" id="ecity">{animal.openExternal.city}</span>
+			</li>
+		
+			<li class="field-zipcode field field-textfield">
+				<label for="ezipCode">{f:translate(id:'external.zipCode')}</label>
+				<span class="property" id="ezipCode">{animal.openExternal.zipCode}</span>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-region field field-textfield">
+				<label for="eregion">{f:translate(id:'external.region')}</label>
+				<span class="property" id="eregion">{animal.openExternal.region}</span>
+			</li>
+		
+			<li class="field-country field field-textfield">
+				<label for="ecountry">{f:translate(id:'external.country')}</label>
+				<span class="property" id="ecountry">{animal.openExternal.country}</span>
+			</li>
+	
+			<li class="field-comment field field-textarea textarea-2">
+				<label for="ecomment">{f:translate(id:'external.comment')}</label>
+				<span class="property" id="ecomment">{animal.openExternal.comment}</span>
+			</li>
+		
+		</ul>
+        </fieldset>
+			</li>
+    </div>
+      </f:if>
+ 
+    <div class="form-nl">
+      <f:for each="{animal.previousTreatments}" as="treatment" iteration="it1" reverse="true">
+			<li class="field-prevtreatments fieldset">
+      <fieldset><legend>{f:translate(id:'animal.treatment.prev')} {dl:override(value:'{treatment.endDate -> f:format.date(format: \'Y-m-d H:i:s\')}',altValue:'{treatment.startDate -> f:format.date(format: \'Y-m-d H:i:s\')}')}</legend>
+        <ul class="form-left form-left-mtop">
+          <f:for each="{treatment.therapies}" as="therapy" iteration="it2">
+          <f:if condition="{it2.cycle}%5">
+            <f:else>           
+              </ul>
+              <ul class="form-left form-left-mtop">
+            </f:else>
+          </f:if>
+  	  		<li class="field-therapy field field-checkbox">
+              <span class="property" id="ptreatment-{it1.index}-{it2.index}">{therapy.name}</span>
+			    </li>
+          <f:if condition="{therapy.hasExtraData}">
+  	  		<li class="field-treatmentextra field field-textfield">
+            <span class="property" id="ptreatmentextra-{it1.index}-{it2.index}">{dl:array(obj:treatment.treatmentExtras,prop:therapy,comp:'therapy')}</span>
+			    </li>
+          </f:if>
+          </f:for>
+        </ul>      
+        <ul class="form-left form-left-2">
+          <li class="field-ptdoctor field field-select">
+    				<label for="ptdoctor-{it1.index}">{f:translate(id:'treatment.doctor')}</label>
+		    		<span class="property" id="ptsoctor-{it1.index}">{treatment.doctor}</span>
+          </li>
+			    <li class="field-comment field field-textarea textarea-3">
+				    <label for="tcomment-{it1.index}">{f:translate(id:'treatment.comment')}</label>
+    				<span class="property" id="tcomment-{it1.index}">{treatment.comment}</span>
+		    	</li>
+        </ul>
+      </fieldset>
+			</li>
+      </f:for>
+    </div>
+
+    <div class="form-nl">
+			<li class="field-treatments fieldset">
+      <fieldset><legend>{f:translate(id:'animal.treatment')}</legend>
+        <ul class="form-left form-left-mtop">
+          <f:for each="{therapies}" as="therapy" key="therapyid" iteration="it">
+          <f:if condition="{it.cycle}%5">
+            <f:else>           
+              </ul>
+              <ul class="form-left form-left-mtop">
+            </f:else>
+          </f:if>
+  	  		<li class="field-therapy field field-checkbox">
+            <f:validation.ifHasErrors>
+              <f:then>
+                <f:form.checkbox name="treatment[therapies][]" value="{therapyid}" id="treatment-{it.index}" title="{therapy.comment}" checked="{dl:ifIn(is:therapyid,in:'{dl:FormValue(parameter:\'treatment.therapies\')}',then:'true',else:'false')}"/><label for="treatment-{it.index}" title="{therapy.comment}">{therapy.name}</label>
+              </f:then>
+              <f:else>
+                <f:form.checkbox name="treatment[therapies][]" value="{therapyid}" id="treatment-{it.index}" title="{therapy.comment}" checked="{dl:ifIn(is:therapy,in:animal.openTreatment.therapies,then:'true',else:'false')}"/><label for="treatment-{it.index}" title="{therapy.comment}">{therapy.name}</label>
+              </f:else>
+            </f:validation.ifHasErrors>
+			    </li>
+          <f:if condition="{therapy.hasExtraData}">
+  	  		<li class="field-treatmentextra field field-textfield">
+            <f:form.textfield name="treatment[treatmentExtra][{therapyid}]" id="treatmentextra-{it.index}" value="{dl:FormValue(parameter:'treatment.treatmentExtra.{therapyid}',alt:'{dl:array(obj:treatment.treatmentExtras,prop:therapy,comp:\'therapy\')}')}"/>
+			    </li>
+          </f:if>
+          </f:for>
+        </ul>      
+        <ul class="form-left form-left-2">
+          <li class="field-doctor field field-select">
+    				<label for="treatment-doctor">{f:translate(id:'treatment.doctor')}</label>
+		    		<f:form.select name="treatment[doctor]" value="{dl:FormValue(parameter:'treatment.doctor',alt:'{session.user}')}" options="{doctors}" id="treatment-doctor" />
+          </li>
+          <li class="field-comment field field-textarea textarea-3">
+				    <label for="tcomment">{f:translate(id:'treatment.comment')}</label>
+    				<f:form.textarea name="treatment[comment]" value="{dl:FormValue(parameter:'treatment.comment',alt:'{treatment.comment}')}" id="tcomment" />
+		    	</li>
+        </ul>
+      </fieldset>
+			</li>
+    </ul>  
+    </div>
+
+    <div class="form-area">
+			<div class="form-buttons">
+				<div class="form-area-right">
+				<f:form.submit name="continue" value="{f:translate(id:'animal.continue')}" class="button"/>
+				<f:form.submit name="release" value="{f:translate(id:'animal.release')}" class="button"/>
+        <f:if condition="{animal.openExternal}">
+          <f:then>
+				  <f:form.submit name="extern" value="{f:translate(id:'animal.external.edit')}" class="button"/>
+				  <f:form.submit name="newextern" value="{f:translate(id:'animal.external.new')}" class="button"/>
+          </f:then>
+          <f:else>
+				  <f:form.submit name="extern" value="{f:translate(id:'animal.external')}" class="button"/>
+          </f:else>
+        </f:if>
+				<f:form.submit name="dead" value="{f:translate(id:'animal.dead')}" class="button"/>
+ 			  </div>
+			<f:form.submit name="cancel" value="{f:translate(id:'cancel')}" class="cancel-button" />
+		  </div>
+	  </div>
+	</f:form>
+</f:section>

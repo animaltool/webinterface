@@ -1,0 +1,299 @@
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+
+-
+  name: 'List'    
+  uriPattern: ''
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+-
+  name: 'Treatment'    
+  uriPattern: 'treatment/{animal}'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'treatment'
+    
+-
+  name: 'Edit'    
+  uriPattern: 'edit/{animal}'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'view'    
+  uriPattern: 'view/{animal}'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'view'
+
+-
+  name: 'Send External'    
+  uriPattern: 'send/{animal}'
+  defaults:
+    '@controller': 'external'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'open'
+
+-
+  name: 'New'    
+  uriPattern: 'new'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'new'
+
+-
+  name: 'Logout'
+  uriPattern: 'logut'
+  defaults:
+    '@controller': 'Login'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'logout'
+    
+-
+  name: 'Login'
+  uriPattern: 'login(/{@action})'
+  defaults:
+    '@controller': 'Login'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Select Locaton'    
+  uriPattern: 'location/select'
+  defaults:
+    '@controller': 'location'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'select'
+
+-
+  name: 'Admin Locations'
+  uriPattern: 'admin/locations'
+  defaults:
+    '@controller': 'location'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin Locations'
+  uriPattern: 'admin/location(/{@action})'
+  defaults:
+    '@controller': 'location'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin Breads'
+  uriPattern: 'admin/breads'
+  defaults:
+    '@controller': 'bread'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin Breads edit Species'
+  uriPattern: 'admin/breads/edit/{species}'
+  defaults:
+    '@controller': 'bread'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'Admin New Species'
+  uriPattern: 'admin/species/new'
+  defaults:
+    '@controller': 'bread'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'new'   
+    
+-
+  name: 'Admin Colors'
+  uriPattern: 'admin/colors'
+  defaults:
+    '@controller': 'color'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin Owner Edit'
+  uriPattern: 'admin/owner/edit/{owner}'
+  defaults:
+    '@controller': 'owner'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'Admin Owners'
+  uriPattern: 'admin/owners(/{@action})'
+  defaults:
+    '@controller': 'owner'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'     
+
+-
+  name: 'Admin External Edit'
+  uriPattern: 'admin/external/edit/{external}'
+  defaults:
+    '@controller': 'external'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'Admin External'
+  uriPattern: 'admin/externals(/{@action})'
+  defaults:
+    '@controller': 'external'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'     
+
+-
+  name: 'Admin Therapy Edit'
+  uriPattern: 'admin/therapy/edit/{therapy}'
+  defaults:
+    '@controller': 'therapy'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'Admin Therapies'
+  uriPattern: 'admin/therapies(/{@action})'
+  defaults:
+    '@controller': 'therapy'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin User Edit'
+  uriPattern: 'admin/user/edit/{user}'
+  defaults:
+    '@controller': 'user'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'edit'
+
+-
+  name: 'Admin Users'
+  uriPattern: 'admin/users(/{@action})'
+  defaults:
+    '@controller': 'user'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'
+
+-
+  name: 'Admin History for Animal'
+  uriPattern: 'admin/history/for/{animal}'
+  defaults:
+    '@controller': 'historyChange'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'animal'     
+
+-
+  name: 'Admin History by Date'
+  uriPattern: 'admin/history(/{from})'
+  defaults:
+    '@controller': 'historyChange'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'    
+
+-
+  name: 'Admin History'
+  uriPattern: 'admin/history'
+  defaults:
+    '@controller': 'historyChange'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'    
+
+-
+  name: 'Admin History by date with enddate'
+  uriPattern: 'admin/history/{from}(/{to})'
+  defaults:
+    '@controller': 'historyChange'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'index'    
+
+-
+  name: 'Admin Report by Date'
+  uriPattern: 'admin/report(/{from})'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'report'    
+
+-
+  name: 'Admin Report'
+  uriPattern: 'admin/report'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'report'    
+
+-
+  name: 'Admin Report by date with enddate'
+  uriPattern: 'admin/report/{from}(/{to})'
+  defaults:
+    '@controller': 'animal'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'report'    
+
+-
+  name: 'App Info'
+  uriPattern: 'app/info'
+  acceptedHttpMethods: ['GET']
+  defaults:
+    '@controller': 'App'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'info'
+    '@format':     'json'
+-
+  name: 'App Release Animal list'
+  uriPattern: 'app/animals/{location}'
+  acceptedHttpMethods: ['GET']
+  defaults:
+    '@controller': 'App'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'animals'
+    '@format':     'json'
+-
+  name: 'App Add'
+  acceptedHttpMethods: ['POST']
+  appendExceedingArguments: TRUE
+  uriPattern: 'app/add'
+  defaults:
+    '@controller': 'App'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'add'
+    '@format':     'json'
+-
+  name: 'App Release Animal'
+  uriPattern: 'app/release/{animal}'
+  acceptedHttpMethods: ['DELETE']
+  defaults:
+    '@controller': 'App'
+    '@package':    'DLigo.Animaltool'
+    '@action':     'release'
+    '@format':     'json'      

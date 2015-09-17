@@ -1,0 +1,16 @@
+Famelo:
+  PDF:
+    # Default Generator using Mpdf
+    DefaultGenerator: '\Famelo\PDF\Generator\MpdfGenerator'
+    DefaultGeneratorOptions: []
+
+    # Generator using wkhtmltopdf through knplabs/knp-snappy
+    #DefaultGenerator: '\Famelo\PDF\Generator\WebkitGenerator'
+    #DefaultGeneratorOptions:
+    #  Binary: '/usr/local/bin/wkhtmltopdf'
+
+TYPO3:
+  Flow:
+    object:
+      excludeClasses:
+        'knplabs.*': ['.*']

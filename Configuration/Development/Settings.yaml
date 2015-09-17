@@ -1,0 +1,24 @@
+#                                                                        #
+# Example Settings                                                       #
+#                                                                        #
+# This file contains settings for various parts of the application.      #
+# Copy this file to Settings.yaml, and adjust as necessary.              #
+#                                                                        #
+# Please refer to the default settings file(s) or the manuals for        #
+# possible configuration options.                                        #
+#                                                                        #
+
+TYPO3:
+  Flow:
+    persistence:
+      backendOptions:
+        dbname: 'database_name'      # adjust to your database name
+        user: 'database_user'             # adjust to your database user
+        password: 'database_password'        # adjust to your database password
+
+       # if you want to log executed SQL queries, enable the next 2 lines
+#      doctrine:
+#        sqlLogger: 'TYPO3\Flow\Persistence\Doctrine\Logging\SqlLogger'
+
+    core:
+      subRequestPhpIniPathAndFilename: '/path/to/webserver/www/php.ini'

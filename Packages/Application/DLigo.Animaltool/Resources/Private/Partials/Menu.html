@@ -1,0 +1,55 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<div class="menu">
+<nav>
+  <ul class="main-menu">
+    <li class="menu-select-location"><f:link.action action="select" controller="location">{f:translate(id: 'menu.location.change', arguments: {0:'{dl:override(value:session.location.shortName,altValue:\'{f:translate(id: \\'all\\')}\')}'})}</f:link.action></li>
+    <dl:link.action action="index" controller="animal" before="<li class=\"menu-animal-list\">" beforeCur="<li class=\"menu-animal-list active\">">{f:translate(id:'menu.list')}</dl:link.action></li>
+    <dl:link.action action="new" controller="animal" before="<li class=\"menu-animal-new\">" beforeCur="<li class=\"menu-animal-new active\">">{f:translate(id:'animal.create')}</dl:link.action></li>
+    <f:security.ifHasRole role="Admin">
+      <f:then>
+    <dl:link.action action="index" controller="historyChange" before="<li class=\"menu-user-edit\">" beforeCur="<li class=\"menu-user-edit active\">">{f:translate(id:'menu.history')}</dl:link.action></li>
+    <dl:link.action action="report" controller="animal" before="<li class=\"menu-report\">" beforeCur="<li class=\"menu-report active\">">{f:translate(id:'menu.report')}</dl:link.action></li>
+      </f:then>
+    </f:security.ifHasRole>
+    <li class="menu-logout"><f:link.action action="logout" controller="login">{f:translate(id:'menu.logout')}</f:link.action></li>
+  </ul>
+    <f:security.ifHasRole role="Admin">
+      <f:then>
+  <ul class="admin-menu">
+    <dl:link.action action="index" controller="location" before="<li class=\"menu-location-edit\">" beforeCur="<li class=\"menu-location-edit active\">">{f:translate(id:'menu.location.edit')}</dl:link.action></li>
+    <dl:link.action action="index" controller="bread" before="<li class=\"menu-bread-edit\">" beforeCur="<li class=\"menu-bread-edit active\">">{f:translate(id:'menu.bread')}</dl:link.action></li>
+    <dl:link.action action="index" controller="color" before="<li class=\"menu.color-edit\">" beforeCur="<li class=\"menu.color-edit active\">">{f:translate(id:'menu.color')}</dl:link.action></li>
+    <dl:link.action action="index" controller="owner" before="<li class=\"menu-owner-edit\">" beforeCur="<li class=\"menu-owner-edit active\">">{f:translate(id:'menu.owner')}</dl:link.action></li>
+    <dl:link.action action="index" controller="external" before="<li class=\"menu-external-edit\">" beforeCur="<li class=\"menu-external-edit active\">">{f:translate(id:'menu.external')}</dl:link.action></li>
+    <dl:link.action action="index" controller="therapy" before="<li class=\"menu-edit-therapy\">" beforeCur="<li class=\"menu-edit-therapy active\">">{f:translate(id:'menu.therapy')}</dl:link.action></li>
+    <dl:link.action action="index" controller="user" before="<li class=\"menu-user-edit\">" beforeCur="<li class=\"menu-user-edit active\">">{f:translate(id:'menu.user')}</dl:link.action></li>
+  </ul>  
+      </f:then>
+    </f:security.ifHasRole>
+</nav>
+</div>

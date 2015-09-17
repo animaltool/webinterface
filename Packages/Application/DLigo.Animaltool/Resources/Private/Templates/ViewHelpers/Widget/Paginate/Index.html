@@ -1,0 +1,98 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+<f:if condition="{configuration.insertAbove}">
+	<f:render section="paginator" arguments="{pagination: pagination,posClass:'top'}" />
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<div class="clearer"></div>
+<f:if condition="{configuration.insertBelow}">
+	<f:render section="paginator" arguments="{pagination: pagination,posClass:'bottom'}" />
+</f:if>
+
+<f:section name="paginator">
+	<f:if condition="{pagination.numberOfPages} > 1">
+		<div class="page-navigation">
+			<ul class="typo3-widget-paginator paginator-{posClass}">
+				<f:if condition="{pagination.previousPage}">
+					<li class="previous">
+						<f:if condition="{pagination.previousPage} > 1">
+							<f:then>
+								<f:widget.link action="index" arguments="{currentPage: pagination.previousPage}">&laquo;</f:widget.link>
+							</f:then>
+							<f:else>
+								<f:widget.link action="index">&laquo;</f:widget.link>
+							</f:else>
+						</f:if>
+					</li>
+				</f:if>
+				<f:if condition="{pagination.displayRangeStart} > 1">
+					<li class="first">
+						<f:widget.link action="index">1</f:widget.link>
+					</li>
+				</f:if>
+				<f:if condition="{pagination.hasLessPages}">
+					<li>...</li>
+				</f:if>
+				<f:for each="{pagination.pages}" as="page">
+					<f:if condition="{page.isCurrent}">
+						<f:then>
+							<li class="current">
+								{page.number}
+							</li>
+						</f:then>
+						<f:else>
+							<li>
+								<f:if condition="{page.number} > 1">
+									<f:then>
+										<f:widget.link action="index" arguments="{currentPage: page.number}">{page.number}</f:widget.link>
+									</f:then>
+									<f:else>
+										<f:widget.link action="index">{page.number}</f:widget.link>
+									</f:else>
+								</f:if>
+							</li>
+						</f:else>
+					</f:if>
+				</f:for>
+				<f:if condition="{pagination.hasMorePages}">
+					<li>...</li>
+				</f:if>
+				<f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+					<li class="last">
+						<f:widget.link action="index" arguments="{currentPage: pagination.numberOfPages}">{pagination.numberOfPages}</f:widget.link>
+					</li>
+				</f:if>
+				<f:if condition="{pagination.nextPage}">
+					<li class="next">
+						<f:widget.link action="index" arguments="{currentPage: pagination.nextPage}">&raquo;</f:widget.link>
+					</li>
+				</f:if>
+			</ul>
+		</div>
+	</f:if>
+</f:section>

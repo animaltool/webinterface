@@ -1,0 +1,17 @@
+{
+  "name":"famelo\/pdf",
+  "type":"typo3-flow-package",
+  "description":"",
+  "require": {
+    "typo3\/flow": "*"
+  },
+  "suggest": {
+    "knplabs/knp-snappy":  "wkhtmltopdf wrapper to use the WebkitGenerator"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-0": {
+      "Famelo\\PDF":"Classes"
+    }
+  }
+}

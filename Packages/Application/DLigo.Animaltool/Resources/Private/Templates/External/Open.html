@@ -1,0 +1,163 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id: 'external.open', arguments:{0:'{animal.boxId}'})}</f:section>
+
+<f:section name="Content">
+  <f:render partial="FormErrors" arguments="{for: 'external'}" />
+  <h1><f:render section="Title" arguments="{animal:animal}" /></h1>
+	<f:form action="send" object="{external}" objectName="external" class="form-edit">
+    <f:form.hidden name="animal" value="{animal}" />
+		<ul class="form-left">
+			<li class="field-externaltype fieldset fieldset-radio">
+        <fieldset>
+				<legend>{f:translate(id:'external.externalType')}</legend>
+        <ul>
+			    <li class="field-externaltype-clinic field field-radio">
+            <f:form.radio property="externalType" id="externaltype-clinic" value="{dl:array(obj:external.externalTypeIds,prop:'CLINIC')}" /><label for="externaltype-clinic">{f:translate(id:'external.externalType.clinic')}</label>
+          </li>
+			    <li class="field-externaltype-shelter field field-radio">
+            <f:form.radio property="externalType" id="externaltype-shelter" value="{dl:array(obj:external.externalTypeIds,prop:'SHELTER')}" /><label for="externaltype-shelter">{f:translate(id:'external.externalType.shelter')}</label>
+          </li>
+			    <li class="field-ispermanent field field-checkbox">
+    				<f:form.checkbox property="isPermanent" value="true" id="ispermanent" /><label for="ispermanent">{f:translate(id:'external.isPermanent')}</label>        
+          </li>
+			    <li class="field-externaltype-adoption field field-radio">
+            <f:form.radio property="externalType" id="externaltype-adoption" value="{dl:array(obj:external.externalTypeIds,prop:'ADOPTION')}" /><label for="externaltype-adoption">{f:translate(id:'external.externalType.adoption')}</label>
+          </li>
+        </ul>
+        </fieldset>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-name field field-textfield">
+				<label for="name">{f:translate(id:'external.name')}</label>
+				<f:form.textfield property="name" id="name" />
+			</li>
+		
+			<li class="field-firstname field field-textfield">
+				<label for="firstname">{f:translate(id:'external.firstName')}</label>
+				<f:form.textfield property="firstName" id="firstname" />
+			</li>
+			
+			<li class="field-lastname field field-textfield">
+				<label for="firstname">{f:translate(id:'external.lastName')}</label>
+				<f:form.textfield property="lastName" id="lastname" />
+			</li>
+
+			<li class="field-phone field field-textfield">
+				<label for="phone">{f:translate(id:'external.phone')}</label>
+				<f:form.textfield property="phone" id="phone" />
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-street field field-textfield">
+				<label for="street">{f:translate(id:'external.street')}</label>
+        <f:if condition="external.street">
+        <f:then>
+				  <f:form.textfield property="street" id="street" />
+        </f:then>
+        <f:else>
+				  <f:form.textfield property="street" id="street" value="{sesstion.location.street}" />
+        </f:else>
+        </f:if>
+			</li>
+		
+			<li class="field-housenumber field field-textfield">
+				<label for="houseNumber">{f:translate(id:'external.houseNumber')}</label>
+				<f:form.textfield property="houseNumber" id="houseNumber" />
+			</li>
+		
+			<li class="field-zipcode field field-textfield">
+				<label for="zipCode">{f:translate(id:'external.zipCode')}</label>
+        <f:if condition="external.zipCode">
+        <f:then>
+  				<f:form.textfield property="zipCode" id="zipCode" />
+        </f:then>
+        <f:else>
+  				<f:form.textfield property="zipCode" id="zipCode" value="{session.location.zipCode}" />
+        </f:else>
+        </f:if>
+			</li>
+		
+			<li class="field-city field field-textfield">
+				<label for="city">{f:translate(id:'external.city')}</label>
+        <f:if condition="external.city">
+        <f:then>
+  				<f:form.textfield property="city" id="city" />
+        </f:then>
+        <f:else>
+  				<f:form.textfield property="city" id="city" value="{session.location.city}" />
+        </f:else>
+        </f:if>
+			</li>
+    </ul>      
+
+    <ul class="form-left">
+			<li class="field-region field field-textfield">
+				<label for="region">{f:translate(id:'external.region')}</label>
+        <f:if condition="external.region">
+        <f:then>
+  				<f:form.textfield property="region" id="region" />
+        </f:then>
+        <f:else>
+  				<f:form.textfield property="region" id="region" value="{session.location.region}" />
+        </f:else>
+        </f:if>
+			</li>
+		
+			<li class="field-country field field-textfield">
+				<label for="country">{f:translate(id:'external.country')}</label>
+        <f:if condition="external.country">
+        <f:then>
+	 			<f:form.textfield property="country" id="country" />
+        </f:then>
+        <f:else>
+  				<f:form.textfield property="country" id="country" value="{session.location.country}" />
+        </f:else>
+        </f:if>
+			</li>
+
+			<li class="field-comment field field-textarea textarea-2">
+				<label for="comment">{f:translate(id:'external.comment')}</label>
+				<f:form.textarea property="comment" id="comment" />
+			</li>
+    </ul>
+    <div class="clearer"></div>
+		
+    <div class="form-area">
+			<div class="form-buttons">
+				<div class="form-area-right">
+  				<f:form.submit value="{f:translate(id:'external.send')}" class="button" />
+  			</div>
+			</div>
+		</div>      
+	</f:form>
+</f:section>

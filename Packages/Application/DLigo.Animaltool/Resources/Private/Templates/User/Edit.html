@@ -1,0 +1,133 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">Edit user "{user}"</f:section>
+
+<f:section name="Content">
+  <f:render partial="FormErrors" arguments="{for: 'username',model:'user'}" />
+  <f:render partial="FormErrors" arguments="{for: 'user'}" />
+  <f:render partial="FormErrors" arguments="{for: 'password',model:'user'}" />
+  <h1><f:render section="Title" arguments="{user:user}"/></h1>
+	<f:form action="update" object="{user}" objectName="user">
+  	<f:form.hidden name="username[old]" value="{user.username}" /> 
+		<ul class="form-left">
+			<li class="field-username field field-textfield">
+				<label for="username">{f:translate(id:'authentication.username')}</label>
+				<f:form.textfield name="username[new]" id="username" value="{dl:FormValue(parameter:'usernme.new',alt:'{user.username}')}" />
+			</li>
+		
+			<li class="field-firstname field field-textfield">
+				<label for="firstname">{f:translate(id:'user.firstname')}</label>
+				<f:form.textfield property="firstname" id="firstname" />
+			</li>
+		
+			<li class="field-lastname field field-textfield">
+				<label for="firstname">{f:translate(id:'user.lastname')}</label>
+				<f:form.textfield property="lastname" id="lastname" />
+			</li>
+    </ul>
+
+		<ul class="form-left">
+			<li class="field-password field field-textfield field-pass">
+				<label for="firstname">{f:translate(id:'authentication.password')}</label>
+				<f:form.password name="password[]" id="password" />
+			</li>
+  		<li class="field-password2 field field-textfield field-pass">
+				<label for="password2">{f:translate(id:'user.password2')}</label>
+				<f:form.password name="password[]" id="password2" />
+			</li>
+		
+			<li class="field-phone field field-textfield">
+				<label for="phone">{f:translate(id:'user.phone')}</label>
+				<f:form.textfield property="phone" id="phone" />
+			</li>
+			
+			<li class="field-street field field-textfield">
+				<label for="street">{f:translate(id:'user.street')}</label>
+				<f:form.textfield property="street" id="street" />
+			</li>
+    </ul>
+
+		<ul class="form-left">
+			<li class="field-number field field-textfield">
+				<label for="number">{f:translate(id:'user.number')}</label>
+				<f:form.textfield property="number" id="number" />
+			</li>
+		
+			<li class="field-zipcode field field-textfield">
+				<label for="zipCode">{f:translate(id:'user.zipCode')}</label>
+				<f:form.textfield property="zipCode" id="zipCode" />
+			</li>
+		
+			<li class="field-city field field-textfield">
+				<label for="city">{f:translate(id:'user.city')}</label>
+				<f:form.textfield property="city" id="city" />
+			</li>
+		
+			<li class="field-region field field-textfield">
+				<label for="region">{f:translate(id:'user.region')}</label>
+				<f:form.textfield property="region" id="region" />
+			</li>
+    </ul>
+
+		<ul class="form-left">
+			<li class="field-country field field-textfield">
+				<label for="country">{f:translate(id:'user.country')}</label>
+				<f:form.textfield property="country" id="country" />
+			</li>
+		
+			<li class="field-comment field field-textarea textarea-3">
+				<label for="comment">{f:translate(id:'user.comment')}</label>
+				<f:form.textarea property="comment" id="comment" />
+			</li>
+    </ul>
+
+		<ul class="form-left">
+      <f:if condition="{user}!={session.user}">
+			<li class="field-role field field-select">
+				<label for="role">{f:translate(id:'user.role')}</label>
+				<f:form.select name="role" options="{roles}" id="role" value="{dl:FormValue(parameter:'role',alt:'{user.role}')}" />
+			</li>
+      </f:if>
+
+			<li class="field-locations field field-multiselect multiselect-3">
+				<label for="locations">{f:translate(id:'user.locations')}</label>
+				<f:form.select multiple="true" property="locations" id="locations" options="{allLocations}" />
+			</li>
+		</ul>
+    <div class="clearer"></div>
+		
+    <div class="form-area">
+			<div class="form-buttons">
+				<div class="form-area-right">
+  				<f:form.submit value="{f:translate(id:'update')}" class="button" />
+  			</div>
+			</div>
+		</div>      
+	</f:form>
+</f:section>

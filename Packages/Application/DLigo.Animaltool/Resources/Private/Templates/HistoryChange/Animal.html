@@ -1,0 +1,64 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">{f:translate(id:'history.list.animal',arguments:{0:'{animal}'})}</f:section>
+
+<f:section name="Content">
+  <h1><f:render section="Title" arguments="{animal:animal}"/></h1>
+	<f:if condition="{history}">
+		<f:then>
+			<table cellpadding="0" cellspacing="0" class="history-list list-history-animal">
+					<tr class="head">
+            <th class="col-time">{f:translate(id:'history.time')}</th>
+            <th class="col-object">{f:translate(id:'history.object')}</th>
+            <th class="col-id">{f:translate(id:'history.id')}</th>
+            <th class="col-type">{f:translate(id:'history.type')}</th>
+            <th class="col-properties">{f:translate(id:'history.properties')}</th>
+            <th class="col-byid">{f:translate(id:'history.byid')}</th>
+            <th class="col-bylabel">{f:translate(id:'history.bylabel')}</th>
+					</tr>
+				<f:for each="{history}" as="entry">
+          <f:cycle values="{0:'odd',1:'even'}" as="zebraClass">
+					<tr class="{zebraClass}">
+          </f:cycle>
+            <td class="col-time">{f:format.date(date: '{entry.time}', format: 'Y-m-d H:i:s')}</td>
+            <td class="col-object">{entry.objectType}</td>
+            <td class="col-id">{entry.id}</td>
+            <td class="col-type">{entry.action}</td>
+            <td class="col-properties"><f:format.nl2br>{entry.properties}</f:format.nl2br></td>
+            <td class="col-byid">{entry.byId}</td>
+            <td class="col-bylabel">{entry.byLabel}</td>
+					</tr>
+				</f:for>
+			</table>
+		</f:then>
+		<f:else>
+			<p>{f:translate(id:'history.none')}</p>
+		</f:else>
+	</f:if>
+</f:section>

@@ -1,0 +1,110 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Title">
+{f:translate(id:'animal.duplicate', arguments:{0:'{dl:override(value:\'{animal}\',altValue:\'{f:translate(id:\\'animal.new.short\\')}\')}'})}
+</f:section>
+
+<f:section name="Content">
+  <div class="description">{f:translate(id:'animal.duplicate.descr', arguments:{0:'{oldanimal}'})}</div>
+  
+  <div class="animal-duplicate-wrapper">
+  <div class="animal-duplicate">
+    <div class="dupl-top">{f:translate(id:'animal.duplicate.old')}</div>
+    <div class="dupl-head">{animal}</div>
+    <div class="dupl-photo"><img src="{f:uri.resource(resource: oldanimal.photo, path:'images/clear.gif')}" alt="{oldanimal}"  class="photo"/></div>
+  </div>
+  <div class="animal-duplicate">
+    <div class="dupl-top">{f:translate(id:'animal.duplicate.new')}</div>
+    <div class="dupl-head">{oldanimal}</div>
+    <div class="dupl-photo"><img src="{f:uri.resource(resource: animal.photo, path:'images/clear.gif')}" alt="{animal}"  class="photo"/></div>
+  </div>
+  </div>
+  <div class="animal-duplicate-wrapper">
+  <div class="animal-duplicate">
+    <div class="dupl-label">{f:translate(id:'animal.tag')}</div>
+    <div class="dupl-value form-error">{animal_tag}</div>
+    <div class="dupl-label">{f:translate(id:'animal.boxID')}</div>
+    <div class="dupl-value">{oldanimal.boxID}</div>
+    <div class="dupl-label">{f:translate(id:'animal.bread')}</div>
+    <div class="dupl-value">{dl:override(value:oldanimal.bread,altValue:oldanimal.species)}</div>
+    <div class="dupl-label">{f:translate(id:'animal.color')}</div>
+    <div class="dupl-value">{oldanimal.color.name}</div>
+    <div class="dupl-label">{f:translate(id:'animal.gender')}</div>
+    <div class="dupl-value">{dl:array(obj:oldanimal.genders,prop:oldanimal.gender)}</div>
+    <div class="dupl-label">{f:translate(id:'animal.comment')}</div>
+    <div class="dupl-value">{oldanimal.comment}</div>
+  </div>
+  <div class="animal-duplicate">
+    <div class="dupl-label">{f:translate(id:'animal.tag')}</div>
+    <div class="dupl-value form-error">{animal_tag}</div>
+    <div class="dupl-label">{f:translate(id:'animal.boxID')}</div>
+    <div class="dupl-value">{animal.boxID}</div>
+    <div class="dupl-label">{f:translate(id:'animal.bread')}</div>
+    <div class="dupl-value">{dl:override(value:animal.bread,altValue:animal.species)}</div>
+    <div class="dupl-label">{f:translate(id:'animal.color')}</div>
+    <div class="dupl-value">{animal.color.name}</div>
+    <div class="dupl-label">{f:translate(id:'animal.gender')}</div>
+    <div class="dupl-value">{dl:array(obj:animal.genders,prop:animal.gender)}</div>
+    <div class="dupl-label">{f:translate(id:'animal.comment')}</div>
+    <div class="dupl-value">{animal.comment}</div>
+  </div>
+  <div class="clearer"></div>
+  </div>
+
+  <div class="form-area">
+  <div class="form-area-right">
+	<f:form action="merge" class="form-merge" enctype="multipart/form-data">
+    <f:form.hidden name="animal" value="{animal}" />
+    <f:form.hidden name="oldAnimal" value="{oldanimal}" />
+    <f:form.hidden name="external" value="{external}" />
+    <div class="duplicate-form-merge">
+      {f:translate(id:'or')} 
+		  <f:form.submit value="{f:translate(id:'animal.merge')}" class="button" />
+    </div>
+	</f:form>
+  </div>
+  <f:render partial="FormErrors" arguments="{for: 'tryagain',model:'duplicate'}"/>
+	<f:form action="merge" class="form-merge" enctype="multipart/form-data">
+    <f:form.hidden name="animal" value="{animal}" />
+    <f:form.hidden name="oldAnimal" value="{oldanimal}" />
+    <f:form.hidden name="external" value="{external}" />
+		<f:form.submit name="cancel" value="{f:translate(id:'cancel')}" class="button cancel-button" />
+    <div class="duplicate-form-retry">
+    <ul>
+  		<li class="field-tryagain field field-textfield">
+        <label for="tryagain">{f:translate(id:'animal.tryagain')}</label>
+        <f:form.textfield name="tryagain" value="" id="tryagain"/>
+	    </li>
+				<f:form.submit name="try" value="{f:translate(id:'animal.tryagain.button')}" class="button" />
+    </ul>
+    </div>
+	</f:form>
+  </div>
+
+</f:section>

@@ -1,0 +1,67 @@
+<f:comment>
+##########################################################################
+#  Copyright notice
+#
+#  (c) 2015 [d] Ligo design+development - All rights reserved
+#  (Details on https://github.com/animaltool)
+#
+#  This script belongs to the TYPO3 Flow package "DLigo.Animaltool".
+#  The DLigo Animaltool project is free software; you can redistribute
+#  it and/or modify it under the terms of the GNU Lesser General Public
+#  License (GPL) as published by the Free Software Foundation; either
+#  version 3 of the License, or  (at your option) any later version.
+#
+#  The GNU General Public License can be found at
+#  http://www.gnu.org/copyleft/gpl.html.
+#
+#  This script is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  This copyright notice MUST APPEAR in all copies of the script!
+##########################################################################
+</f:comment>
+
+{namespace dl=DLigo\Animaltool\ViewHelpers}
+<table class="report-table" cellspacing="0" cellpadding="0">
+  <tr class="report-head">
+    <th class="table-clear"></th>
+  <f:for each="{table.head.col}" as="head" iteration="colit">
+    <f:cycle values="{0: 'col-odd', 1: 'col-even'}" as="colclass">
+    <th class="{colclass}">{head}</th>
+    <f:if condition="{colit.isLast}">
+      <th class="col-total {f:if(condition:colit.isEven,then:'col-odd',else:'col-even')}">{f:translate(id:'report.total')}</th>
+    </f:if>
+    </f:cycle>
+  </f:for>
+  </tr>
+  <f:for each="{table.head.row}" as="row" key="rowid" iteration="rowit">
+  <f:cycle values="{0: 'odd', 1: 'even'}" as="rowclass">
+  <tr class="report-body {rowclass}">
+      <th class="report-row-head">{row}</th>
+    <f:for each="{table.head.col}" as="col" key="colid" iteration="colit">
+    <f:cycle values="{0: 'col-odd', 1: 'col-even'}" as="colclass">
+      <td class="{colclass}">{dl:array(obj:table.data,prop:{0:'{rowid}',1:'{colid}'})}</td>
+      <f:if condition="{colit.isLast}">
+        <td class="col-total {f:if(condition:colit.isEven,then:'col-odd',else:'col-even')}">{dl:array(obj:table.total.row,prop:rowid)}</td>
+      </f:if>
+    </f:cycle>
+    </f:for>
+  </tr>
+  <f:if condition="{rowit.isLast}">
+  <tr class="row-total {f:if(condition:rowit.isEven,then:'odd',else:'even')}">
+    <th>{f:translate(id:'report.total')}</th>
+    <f:for each="{table.total.col}" as="col" iteration="colit">
+    <f:cycle values="{0: 'col-odd', 1: 'col-even'}" as="colclass">
+      <td class="total {colclass}">{col}</td>
+      <f:if condition="{colit.isLast}">
+        <td class="col-total total {f:if(condition:colit.isEven,then:'col-odd',else:'col-even')}">{table.total.total}</td>
+      </f:if>
+    </f:cycle>
+    </f:for>
+  </tr>  
+  </f:if>
+  </f:cycle>
+  </f:for>
+</table>
